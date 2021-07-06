@@ -18,6 +18,8 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     var currentViDevice: AVCaptureDevice!
     var videoInput: AVCaptureDeviceInput!
     
+    var lastSampleBuffer: CMSampleBuffer!
+    
     //系统菜单
     var mainMenu: NSMenu! = {
         return NSApp.mainMenu
@@ -53,6 +55,11 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         return self.deviceMenuItem.submenu
     }()
     
+    //截图item
+    lazy var captureMenuItem: NSMenuItem! = {
+        return self.ctrlMenu?.item(at: 3)
+    }()
+    
     //设备列表
     var deviceList: [AVCaptureDevice] = {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
@@ -62,6 +69,8 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         let availableCameraDevices = deviceDiscoverySession.devices
         return availableCameraDevices
     }()
+    
+
 
     
     @IBOutlet weak var preView: NSView!
@@ -86,7 +95,7 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         //菜单item事件
         self.startMenuItem.action = #selector(startCapture)
         self.stopMenuItem.action = #selector(stopCapture)
-        
+        self.captureMenuItem.action = #selector(captureImage)
         
         self.preView.layer?.backgroundColor = NSColor.lightGray.cgColor
         self.preView.layer?.borderWidth = 2
@@ -174,11 +183,21 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
             self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.preView.layer?.insertSublayer(self.previewLayer, at: 0)
         }
-    
+
         self.avSession.startRunning()
     }
     
-    //结束菜价
+    //截图
+    @objc private func captureImage() -> Void {
+        self.stopCapture()
+        
+        let data: NSData! = Tool.getDataFromCMSampleBuffer(sampleBuffer: self.lastSampleBuffer)
+        Tool.showSaveImagePanel(imageData: data) { (finish) in
+            self.startCapture()
+        }       
+    }
+    
+    //结束采集
     @objc private func stopCapture() -> Void {
         if self.avSession.isRunning {
             self.avSession.stopRunning()
@@ -194,6 +213,7 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if output == self.videoOutput {
             print("获得图像数据")
+            self.lastSampleBuffer = sampleBuffer
         }
     }
  

@@ -69,6 +69,9 @@
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <menu key="submenu" title="设备" id="Mnn-dC-iOj"/>
                                         </menuItem>
+                                        <menuItem title="截图" id="RKg-yq-VAh">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
