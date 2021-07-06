@@ -16,6 +16,11 @@
 		7C8839772692EC5C0074E7D4 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8839762692EC5C0074E7D4 /* VideoToolbox.framework */; };
 		7C8839792692EC640074E7D4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8839782692EC640074E7D4 /* CoreVideo.framework */; };
 		7C88397B2692EC780074E7D4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C88397A2692EC780074E7D4 /* AVFoundation.framework */; };
+		7C8839882693EE2A0074E7D4 /* BseeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8839872693EE2A0074E7D4 /* BseeView.swift */; };
+		7C88398A2693EE3F0074E7D4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8839892693EE3F0074E7D4 /* BaseViewController.swift */; };
+		7C88398D2693EE560074E7D4 /* BaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C88398B2693EE560074E7D4 /* BaseWindowController.swift */; };
+		7C88398E2693EE560074E7D4 /* BaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C88398C2693EE560074E7D4 /* BaseWindowController.xib */; };
+		7C8839922693EE840074E7D4 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8839902693EE840074E7D4 /* MainWindowController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,11 @@
 		7C8839762692EC5C0074E7D4 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		7C8839782692EC640074E7D4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		7C88397A2692EC780074E7D4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7C8839872693EE2A0074E7D4 /* BseeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BseeView.swift; sourceTree = "<group>"; };
+		7C8839892693EE3F0074E7D4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		7C88398B2693EE560074E7D4 /* BaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWindowController.swift; sourceTree = "<group>"; };
+		7C88398C2693EE560074E7D4 /* BaseWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWindowController.xib; sourceTree = "<group>"; };
+		7C8839902693EE840074E7D4 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +116,8 @@
 		7C8839482692CD550074E7D4 /* osxmedia */ = {
 			isa = PBXGroup;
 			children = (
+				7C88398F2693EE600074E7D4 /* Page */,
+				7C8839862693EE140074E7D4 /* Base */,
 				7C8839492692CD550074E7D4 /* AppDelegate.swift */,
 				7C88394B2692CD550074E7D4 /* ViewController.swift */,
 				7C88394D2692CD5B0074E7D4 /* Assets.xcassets */,
@@ -142,6 +154,25 @@
 				7C8839762692EC5C0074E7D4 /* VideoToolbox.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7C8839862693EE140074E7D4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				7C8839872693EE2A0074E7D4 /* BseeView.swift */,
+				7C8839892693EE3F0074E7D4 /* BaseViewController.swift */,
+				7C88398B2693EE560074E7D4 /* BaseWindowController.swift */,
+				7C88398C2693EE560074E7D4 /* BaseWindowController.xib */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		7C88398F2693EE600074E7D4 /* Page */ = {
+			isa = PBXGroup;
+			children = (
+				7C8839902693EE840074E7D4 /* MainWindowController.swift */,
+			);
+			path = Page;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +278,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C88398E2693EE560074E7D4 /* BaseWindowController.xib in Resources */,
 				7C88394E2692CD5B0074E7D4 /* Assets.xcassets in Resources */,
 				7C8839512692CD5B0074E7D4 /* Main.storyboard in Resources */,
 			);
@@ -273,8 +305,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C8839882693EE2A0074E7D4 /* BseeView.swift in Sources */,
+				7C88398A2693EE3F0074E7D4 /* BaseViewController.swift in Sources */,
+				7C8839922693EE840074E7D4 /* MainWindowController.swift in Sources */,
 				7C88394C2692CD550074E7D4 /* ViewController.swift in Sources */,
 				7C88394A2692CD550074E7D4 /* AppDelegate.swift in Sources */,
+				7C88398D2693EE560074E7D4 /* BaseWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
