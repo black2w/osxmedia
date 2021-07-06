@@ -18,7 +18,42 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     var currentViDevice: AVCaptureDevice!
     var videoInput: AVCaptureDeviceInput!
     
+    //系统菜单
+    var mainMenu: NSMenu! = {
+        return NSApp.mainMenu
+    }()
     
+    //菜单子项，item 控制
+    var ctrlMenuItem: NSMenuItem! = {
+        return NSApp.mainMenu?.item(at: 1)
+    }()
+    
+    //控制Menu
+    lazy var ctrlMenu: NSMenu! = {
+        return self.ctrlMenuItem.submenu
+    }()
+    
+    //开始
+    lazy var startMenuItem: NSMenuItem! = {
+        return self.ctrlMenu?.item(at: 0)
+    }()
+    
+    //停止
+    lazy var stopMenuItem: NSMenuItem! = {
+        return self.ctrlMenu?.item(at: 1)
+    }()
+    
+    //设备
+    lazy var deviceMenuItem: NSMenuItem! = {
+        return self.ctrlMenu?.item(at: 2)
+    }()
+    
+    //设备menu
+    lazy var deviceMenu: NSMenu! = {
+        return self.deviceMenuItem.submenu
+    }()
+    
+    //设备列表
     var deviceList: [AVCaptureDevice] = {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
             [.builtInMicrophone, .externalUnknown, .builtInWideAngleCamera],
@@ -27,24 +62,10 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         let availableCameraDevices = deviceDiscoverySession.devices
         return availableCameraDevices
     }()
-    
-//    var deviceTitle: [NSString] = {
-//        var titlesArray: NSMutableArray
-//
-//        
-//        return titlesArray as! [NSString]
-//    }()
-    
-    
-    
-    
-    @IBOutlet weak var preView: NSView!
-    @IBOutlet weak var startBtn: NSButton!
-    @IBOutlet weak var stopBtn: NSButton!
-    
-    @IBOutlet weak var videoInputBtn: NSPopUpButton!
 
     
+    @IBOutlet weak var preView: NSView!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,12 +81,13 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     }
     
     private func defaultSetting() -> Void {
-        self.videoInputBtn.removeAllItems()
-        for device in self.deviceList {
-            let dev = device as AVCaptureDevice
-            self.videoInputBtn.addItem(withTitle: dev.localizedName)
-        }
-            
+        self.resetDeviceMenu()
+        
+        //菜单item事件
+        self.startMenuItem.action = #selector(startCapture)
+        self.stopMenuItem.action = #selector(stopCapture)
+        
+        
         self.preView.layer?.backgroundColor = NSColor.lightGray.cgColor
         self.preView.layer?.borderWidth = 2
         self.preView.layer?.borderColor = NSColor.red.cgColor
@@ -79,26 +101,37 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         self.changeCamera(videoDevice: defaultVideoDevice)
     }
     
-    
-    //按钮事件
-    @IBAction func onStartBtnClicked(sender: Any) -> Void {
-        self.startCapture()
+    //设置设备菜单
+    private func resetDeviceMenu() -> Void {
+        self.deviceMenu.removeAllItems()
+        for (index, device) in self.deviceList.enumerated() {
+            let dev = device as AVCaptureDevice
+            var devItem: NSMenuItem! = NSMenuItem.init(title: dev.localizedName, action: #selector(deviceHasSelect), keyEquivalent: "")
+            devItem.tag = index
+            self.deviceMenu.addItem(devItem)
+        }
     }
     
-    @IBAction func onStopBtnClicked(sender: Any) -> Void {
-        self.stopCapture()
-    }
     
-    @IBAction func handleInputChannelChanged (sender: NSPopUpButton) -> Void {
-        let index: NSInteger = sender.indexOfSelectedItem
+    //切换设备
+    @objc private func deviceHasSelect(item: NSMenuItem) -> Void {
+        let index: Int = item.tag
         let videoDevice = self.deviceList[index]
         
         self.stopCapture()
         self.changeCamera(videoDevice: videoDevice)
         self.startCapture()
+        
     }
     
+    //随动preview
+    public func resizePreviewer() -> Void {
+        if (self.preView != nil) && (self.previewLayer != nil) {
+            self.previewLayer.frame = self.preView.bounds
+        }
+    }
     
+    //切换摄像头
     private func changeCamera(videoDevice: AVCaptureDevice) -> Void {
         self.resetDevice()
         
@@ -121,6 +154,8 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         }
     }
     
+    
+    //重置
     private func resetDevice() -> Void {
         if self.videoOutput != nil {
             self.avSession.removeOutput(self.videoOutput)
@@ -131,17 +166,20 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         }
     }
     
+    //开始采集
+    @objc private func startCapture() -> Void {
+        if self.previewLayer == nil {
+            self.previewLayer = AVCaptureVideoPreviewLayer.init(session: self.avSession)
+            self.previewLayer.frame = self.preView.bounds
+            self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+            self.preView.layer?.insertSublayer(self.previewLayer, at: 0)
+        }
     
-    private func startCapture() -> Void {
-        self.previewLayer = AVCaptureVideoPreviewLayer.init(session: self.avSession)
-        self.previewLayer.frame = self.preView.bounds
-        self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        self.preView.layer?.insertSublayer(self.previewLayer, at: 0)
-        
         self.avSession.startRunning()
     }
     
-    private func stopCapture() -> Void {
+    //结束菜价
+    @objc private func stopCapture() -> Void {
         if self.avSession.isRunning {
             self.avSession.stopRunning()
         }

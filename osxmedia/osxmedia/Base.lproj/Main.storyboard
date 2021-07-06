@@ -55,6 +55,23 @@
                                     </items>
                                 </menu>
                             </menuItem>
+                            <menuItem title="控制" id="1ut-XP-JZF">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="控制" id="T4i-OT-Vvx">
+                                    <items>
+                                        <menuItem title="开始捕获" id="KtJ-fT-t9m">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="停止捕获" id="h3c-RR-YX6">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        </menuItem>
+                                        <menuItem title="设备" id="bh2-n2-L5q">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="设备" id="Mnn-dC-iOj"/>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
                             <menuItem title="File" id="dMs-cI-mzQ">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="File" id="bib-Uj-vzu">
@@ -706,97 +723,22 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="osxmedia" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="370"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="W2Z-aV-NSQ">
-                                <rect key="frame" x="0.0" y="100" width="480" height="270"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="W2Z-aV-NSQ" secondAttribute="height" multiplier="16:9" id="wzA-zD-1q5"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             </customView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jCR-4N-RQL">
-                                <rect key="frame" x="20" y="29" width="100" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="C6e-0y-qr3"/>
-                                    <constraint firstAttribute="height" constant="40" id="f3b-5Y-2XF"/>
-                                </constraints>
-                                <buttonCell key="cell" type="roundRect" title="开始" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="DDo-Dv-2bS">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="onStartBtnClickedWithSender:" target="XfG-lQ-9wD" id="2PN-Ey-4V2"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-hJ-OpL">
-                                <rect key="frame" x="360" y="29" width="100" height="41"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="FV2-WW-Hb4"/>
-                                    <constraint firstAttribute="width" constant="100" id="vjw-0K-Imd"/>
-                                </constraints>
-                                <buttonCell key="cell" type="roundRect" title="停止" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Lgt-1C-IHt">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="cellTitle"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="onStopBtnClickedWithSender:" target="XfG-lQ-9wD" id="Z5T-Uh-hVZ"/>
-                                </connections>
-                            </button>
-                            <box boxType="custom" borderType="none" translatesAutoresizingMaskIntoConstraints="NO" id="puV-uo-dh5">
-                                <rect key="frame" x="170" y="0.0" width="140" height="100"/>
-                                <view key="contentView" id="Sjq-ry-sEk">
-                                    <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U1K-NJ-CzR">
-                                            <rect key="frame" x="-3" y="26" width="147" height="45"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="Lww-vl-gXU"/>
-                                            </constraints>
-                                            <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Vls-Fn-yFT" id="aPg-9Y-wiG">
-                                                <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="menu"/>
-                                                <menu key="menu" id="WQa-tb-h9w">
-                                                    <items>
-                                                        <menuItem title="Item 1" state="on" id="Vls-Fn-yFT"/>
-                                                        <menuItem title="Item 2" id="3Xb-5S-Hhb"/>
-                                                        <menuItem title="Item 3" id="tLe-xz-hYg"/>
-                                                    </items>
-                                                </menu>
-                                            </popUpButtonCell>
-                                            <connections>
-                                                <action selector="handleInputChannelChangedWithSender:" target="XfG-lQ-9wD" id="Z6R-iB-aUf"/>
-                                            </connections>
-                                        </popUpButton>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="U1K-NJ-CzR" secondAttribute="trailing" id="P8u-lG-0KD"/>
-                                        <constraint firstItem="U1K-NJ-CzR" firstAttribute="centerY" secondItem="Sjq-ry-sEk" secondAttribute="centerY" id="XXn-Tu-b1e"/>
-                                        <constraint firstItem="U1K-NJ-CzR" firstAttribute="leading" secondItem="Sjq-ry-sEk" secondAttribute="leading" id="lVR-KV-Spu"/>
-                                    </constraints>
-                                </view>
-                            </box>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="W2Z-aV-NSQ" secondAttribute="trailing" id="1Pq-3Z-HfA"/>
-                            <constraint firstItem="kPu-hJ-OpL" firstAttribute="leading" secondItem="puV-uo-dh5" secondAttribute="trailing" constant="50" id="9Fm-4w-ieh"/>
                             <constraint firstItem="W2Z-aV-NSQ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="9fA-lX-00H"/>
-                            <constraint firstAttribute="bottom" secondItem="jCR-4N-RQL" secondAttribute="bottom" constant="30" id="K5L-nz-ifr"/>
-                            <constraint firstItem="jCR-4N-RQL" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="QU7-Yx-fjf"/>
-                            <constraint firstAttribute="bottom" secondItem="kPu-hJ-OpL" secondAttribute="bottom" constant="30" id="QW5-s4-eq4"/>
-                            <constraint firstAttribute="trailing" secondItem="kPu-hJ-OpL" secondAttribute="trailing" constant="20" id="cfy-St-nhL"/>
-                            <constraint firstItem="puV-uo-dh5" firstAttribute="leading" secondItem="jCR-4N-RQL" secondAttribute="trailing" constant="50" id="fb1-k0-qJO"/>
+                            <constraint firstAttribute="bottom" secondItem="W2Z-aV-NSQ" secondAttribute="bottom" id="c8B-1V-yoY"/>
                             <constraint firstItem="W2Z-aV-NSQ" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="ie4-6I-H3t"/>
-                            <constraint firstItem="puV-uo-dh5" firstAttribute="top" secondItem="W2Z-aV-NSQ" secondAttribute="bottom" id="mDY-KJ-uMW"/>
-                            <constraint firstAttribute="bottom" secondItem="puV-uo-dh5" secondAttribute="bottom" id="yU7-6v-ET1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="preView" destination="W2Z-aV-NSQ" id="Ozk-CD-xHv"/>
-                        <outlet property="startBtn" destination="jCR-4N-RQL" id="R6A-1g-EKX"/>
-                        <outlet property="stopBtn" destination="kPu-hJ-OpL" id="EGy-gi-MHp"/>
-                        <outlet property="videoInputBtn" destination="U1K-NJ-CzR" id="bP1-Cu-W3x"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

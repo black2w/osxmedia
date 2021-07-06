@@ -28,20 +28,28 @@ class MainWindowController: BaseWindowController, NSWindowDelegate {
 
             
     @objc func windowDidResize(notification: Notification) {
+        //因为会收到非Mainwindow，因此不根据通知中对象来进行
 //        print("did resize")
 //        let userInfo: NSDictionary! = notification.userInfo as NSDictionary?
 //        let widthNumber: NSNumber = userInfo.object(forKey: "width") as! NSNumber
 //        let heightNumber: NSNumber = userInfo.object(forKey: "height") as! NSNumber
         
+//
+//        let window: NSWindow! = notification.object as! NSWindow
+//        print("窗口变化 \(window)")
+//        let calWidth: CGFloat = CGFloat(Float(window.frame.size.width))
+        let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < 640 ? 640 : self.window?.frame.size.width
         
-        let window: NSWindow! = notification.object as! NSWindow
-        let calWidth: CGFloat = CGFloat(Float(window.frame.size.width))
         
         //以宽为基准，强制比例16：9
 //        var calWidth: CGFloat = widthNumber.floatValue as! CGFloat
         let calHeight: CGFloat = calWidth*9/16.0
         
         self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
+        
+        
+        let vc: ViewController! = self.contentViewController as! ViewController
+        vc.resizePreviewer()
     }
     
     
