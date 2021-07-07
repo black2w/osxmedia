@@ -9,7 +9,7 @@ import Cocoa
 import AVFoundation
 import VideoToolbox
 
-class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, NSMenuDelegate {
     
     var avSession: AVCaptureSession!
     var videoOutput: AVCaptureVideoDataOutput!
@@ -61,15 +61,17 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     }()
     
     //设备列表
-    var deviceList: [AVCaptureDevice] = {
-        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
-            [.builtInMicrophone, .externalUnknown, .builtInWideAngleCamera],
-            mediaType: .video, position: .unspecified)
-        
-        let availableCameraDevices = deviceDiscoverySession.devices
-        return availableCameraDevices
-    }()
+    var deviceList: [AVCaptureDevice]!
     
+//    lazy var deviceList: [AVCaptureDevice] = {
+//        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
+//            [.builtInMicrophone, .externalUnknown, .builtInWideAngleCamera],
+//            mediaType: .video, position: .unspecified)
+//
+//        let availableCameraDevices = deviceDiscoverySession.devices
+//        return availableCameraDevices
+//    }()
+
 
 
     
@@ -90,7 +92,7 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     }
     
     private func defaultSetting() -> Void {
-        self.resetDeviceMenu()
+        self.deviceMenu.delegate = self
         
         //菜单item事件
         self.startMenuItem.action = #selector(startCapture)
@@ -105,9 +107,17 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         self.avSession = AVCaptureSession.init()
         self.avSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
+            [.builtInMicrophone, .externalUnknown, .builtInWideAngleCamera],
+            mediaType: .video, position: .unspecified)
+        let availableCameraDevices = deviceDiscoverySession.devices
+        self.deviceList = availableCameraDevices
+        
         let defaultVideoDevice: AVCaptureDevice! = self.deviceList.first
         currentViDevice = defaultVideoDevice
         self.changeCamera(videoDevice: defaultVideoDevice)
+        
+//        self.resetDeviceMenu()
     }
     
     //设置设备菜单
@@ -116,6 +126,11 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         for (index, device) in self.deviceList.enumerated() {
             let dev = device as AVCaptureDevice
             var devItem: NSMenuItem! = NSMenuItem.init(title: dev.localizedName, action: #selector(deviceHasSelect), keyEquivalent: "")
+            if self.currentViDevice == device {
+                devItem.state = NSControl.StateValue.on
+            } else {
+                devItem.state = NSControl.StateValue.off
+            }
             devItem.tag = index
             self.deviceMenu.addItem(devItem)
         }
@@ -143,8 +158,10 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
     //切换摄像头
     private func changeCamera(videoDevice: AVCaptureDevice) -> Void {
         self.resetDevice()
-        
         self.currentViDevice = videoDevice
+        self.resetDeviceMenu()
+
+        
         self.videoInput = try! AVCaptureDeviceInput(device: videoDevice)
         
         self.videoOutput = AVCaptureVideoDataOutput.init()
@@ -161,6 +178,17 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         if self.avSession.canAddOutput(self.videoOutput) {
             self.avSession.addOutput(self.videoOutput)
         }
+    }
+    
+    func menuWillOpen(_ menu: NSMenu) {
+        let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
+            [.builtInMicrophone, .externalUnknown, .builtInWideAngleCamera],
+            mediaType: .video, position: .unspecified)
+        let availableCameraDevices = deviceDiscoverySession.devices
+        self.deviceList = availableCameraDevices
+        
+        
+        self.resetDeviceMenu()
     }
     
     
