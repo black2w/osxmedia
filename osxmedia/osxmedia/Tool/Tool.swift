@@ -20,12 +20,12 @@ class Tool: NSObject {
     
     
     //显示保存panel
-    class func showSaveImagePanel(imageData: NSData?, saveResult: @escaping (Bool) -> Void) -> Void {
+    class func showSaveImagePanel(imageData: NSData?, fileName: NSString,saveResult: @escaping (Bool) -> Void) -> Void {
         let savePanel = NSSavePanel()
         savePanel.title = "保存图片"
         savePanel.prompt = "保存"
         savePanel.nameFieldLabel = "文件名"
-        savePanel.nameFieldStringValue = "example.png"
+        savePanel.nameFieldStringValue = fileName as String
         savePanel.canSelectHiddenExtension = true
         savePanel.allowedFileTypes = ["jpg", "jpeg"]
 
@@ -56,19 +56,49 @@ class Tool: NSObject {
     }
     
     
+    //获取当前时间字符串
+   class func currentTime() -> String {
+        let dateformatter = DateFormatter()
+        dateformatter.dateFormat = "YYYY-MM-dd HH:mm:ss"// 自定义时间格式
+        // GMT时间 转字符串，直接是系统当前时间
+        return dateformatter.string(from: Date())
+   }
+
+
     
-    // CMSampleBufferRef –> CVImageBufferRef –> CGContextRef –> CGImageRef –> UIImage
+
+    // CMSampleBufferRef –> CVImageBufferRef –> CIImage –> NSCIImageRep –> NSImage -> NSData
     class func getDataFromCMSampleBuffer(sampleBuffer: CMSampleBuffer) -> NSData? {
         if CMSampleBufferDataIsReady(sampleBuffer),
             let pixelBuffer = CMSampleBufferGetImageBuffer (sampleBuffer) {
+            let height = CVPixelBufferGetHeight(pixelBuffer)
+            let width = CVPixelBufferGetWidth(pixelBuffer)
             let ciImage: CIImage! = CIImage(cvImageBuffer: pixelBuffer)
-//            let image: NSImage = NSImage.init(c)
-//            let data: NSData! = image.tiffRepresentation as! NSData
-//            return data
-            return nil
+            
+            let imageRef: NSCIImageRep! = NSCIImageRep(ciImage: ciImage)
+            let nsImage: NSImage! = NSImage.init(size: NSSize(width: width, height: height))
+            nsImage.addRepresentation(imageRef)
+
+            
+            let imageRep = NSBitmapImageRep(data: nsImage.tiffRepresentation!)
+            let pngData = imageRep?.representation(using: .jpeg, properties: [:])
+            
+            return pngData as NSData?
         } else {
             return nil
         }
     }
+    
+    class func convertCMBuffer2Nsdata(sampleBuffer: CMSampleBuffer) -> NSData? {
+        return nil
+    }
+    
+    class func jpegRepresentationOfImage(image: CIImage) -> NSData? {
+        return nil
+    }
+    
+    
+    
 }
+
 

@@ -14,8 +14,8 @@
             filePath = "osxmedia/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
             landmarkName = "startCapture()"
             landmarkType = "7">
          </BreakpointContent>

@@ -181,20 +181,24 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
             self.previewLayer = AVCaptureVideoPreviewLayer.init(session: self.avSession)
             self.previewLayer.frame = self.preView.bounds
             self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        }
+        if self.previewLayer.superlayer == nil {
             self.preView.layer?.insertSublayer(self.previewLayer, at: 0)
         }
-
+        
         self.avSession.startRunning()
     }
     
     //截图
     @objc private func captureImage() -> Void {
-        self.stopCapture()
-        
-        let data: NSData! = Tool.getDataFromCMSampleBuffer(sampleBuffer: self.lastSampleBuffer)
-        Tool.showSaveImagePanel(imageData: data) { (finish) in
-            self.startCapture()
-        }       
+        if self.lastSampleBuffer != nil {
+            self.previewLayer.connection?.isEnabled = false
+            let data: NSData! = Tool.getDataFromCMSampleBuffer(sampleBuffer: self.lastSampleBuffer)
+            Tool.showSaveImagePanel(imageData: data, fileName: Tool.currentTime() as NSString) { (finish) in
+                self.changeCamera(videoDevice: self.currentViDevice)
+                self.previewLayer.connection?.isEnabled = true
+            }
+        }
     }
     
     //结束采集
