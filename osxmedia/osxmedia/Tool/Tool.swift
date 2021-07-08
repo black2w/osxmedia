@@ -22,9 +22,9 @@ class Tool: NSObject {
     //显示保存panel
     class func showSaveImagePanel(imageData: NSData?, fileName: NSString,saveResult: @escaping (Bool) -> Void) -> Void {
         let savePanel = NSSavePanel()
-        savePanel.title = "保存图片"
-        savePanel.prompt = "保存"
-        savePanel.nameFieldLabel = "文件名"
+        savePanel.title = NSLocalizedString("Save Image", comment: "")
+        savePanel.prompt = NSLocalizedString("Save", comment: "")
+        savePanel.nameFieldLabel = NSLocalizedString("File Name", comment: "")
         savePanel.nameFieldStringValue = fileName as String
         savePanel.canSelectHiddenExtension = true
         savePanel.allowedFileTypes = ["jpg", "jpeg"]

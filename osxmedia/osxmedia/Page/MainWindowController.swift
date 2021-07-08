@@ -21,6 +21,7 @@ class MainWindowController: BaseWindowController, NSWindowDelegate {
         self.window?.setFrame(CGRect(origin: CGPoint.zero, size: PREVIEW_DEFAULTSIZE), display: true)
         self.window?.center()
         self.window?.delegate = self
+        self.window?.orderOut(nil)
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)),
