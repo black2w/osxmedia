@@ -14,11 +14,12 @@ class MainWindowController: BaseWindowController, NSWindowDelegate {
         
         self.window?.backgroundColor = NSColor.black
 
-        let visibleFrame: NSRect! = NSScreen.main?.visibleFrame
         // 设置 window 能显示的最大 frame
-        self.window?.setFrame(visibleFrame, display: true)
+        self.window?.setFrame(NSRect(origin: CGPoint.zero, size: PREVIEW_MAXSIZE), display: true)
         // 设置 window 能显示的最小 frame
-        self.window?.contentMinSize = CGSize(width: 640, height: 640*9/16.0)
+        self.window?.contentMinSize = PREVIEW_MINSIZE
+        self.window?.setFrame(CGRect(origin: CGPoint.zero, size: PREVIEW_DEFAULTSIZE), display: true)
+        self.window?.center()
         self.window?.delegate = self
         
         
@@ -27,28 +28,13 @@ class MainWindowController: BaseWindowController, NSWindowDelegate {
     }
 
             
-    @objc func windowDidResize(notification: Notification) {
-        //因为会收到非Mainwindow，因此不根据通知中对象来进行
-//        print("did resize")
-//        let userInfo: NSDictionary! = notification.userInfo as NSDictionary?
-//        let widthNumber: NSNumber = userInfo.object(forKey: "width") as! NSNumber
-//        let heightNumber: NSNumber = userInfo.object(forKey: "height") as! NSNumber
-        
-//
-//        let window: NSWindow! = notification.object as! NSWindow
-//        print("窗口变化 \(window)")
-//        let calWidth: CGFloat = CGFloat(Float(window.frame.size.width))
-        let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < 640 ? 640 : self.window?.frame.size.width
-        
-        
+    @objc private func windowDidResize(notification: Notification) {
+        let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < PREVIEW_MINHEIGHT ? PREVIEW_MINHEIGHT : self.window?.frame.size.width
         //以宽为基准，强制比例16：9
-//        var calWidth: CGFloat = widthNumber.floatValue as! CGFloat
-        let calHeight: CGFloat = calWidth*9/16.0
+        let calHeight: CGFloat = calWidth * PREVIEWSCALE
         
         self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
-        
-        
-        let vc: ViewController! = self.contentViewController as! ViewController
+        let vc: ViewController! = self.contentViewController as? ViewController
         vc.resizePreviewer()
     }
     

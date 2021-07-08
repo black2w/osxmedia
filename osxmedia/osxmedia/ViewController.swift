@@ -31,13 +31,25 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         self.defaultSetting()
     }
     
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        // need fix
+        //等view布局完成自动开始，
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.startCapture() //默认开始
+        }
+    }
+        
+    
+    
     override func loadView() {
         super.loadView()
     }
     
     override func viewDidLayout() {
         super.viewDidLayout()
-        self.previewLayer.frame = self.preView.bounds
     }
 
     override var representedObject: Any? {
@@ -68,9 +80,6 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         let defaultVideoDevice: AVCaptureDevice! = DeviceManager.sharedInstance.deviceList.first
         currentViDevice = defaultVideoDevice
         self.changeCamera(videoDevice: defaultVideoDevice)
-        
-        self.startCapture() //默认开始
-
     }
             
     //随动preview
