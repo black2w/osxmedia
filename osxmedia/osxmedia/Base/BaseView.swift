@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class BseeView: NSView {
+class BaseView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
