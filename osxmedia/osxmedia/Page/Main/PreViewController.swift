@@ -87,6 +87,14 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
             self.avSession = AVCaptureSession.init()
             self.avSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         }
+        
+        if self.previewLayer == nil {
+            self.previewLayer = AVCaptureVideoPreviewLayer.init(session: self.avSession)
+            self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        }
+        if self.previewLayer.superlayer == nil {
+            self.preView.layer = self.previewLayer
+        }
 
     
         //默认设备
@@ -98,7 +106,7 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
     //随动preview
     public func resizePreviewer() -> Void {
         if (self.preView != nil) && (self.previewLayer != nil) {
-            self.previewLayer.frame = self.preView.bounds
+//            self.previewLayer.frame = self.preView.bounds
         }
     }
     
@@ -144,24 +152,11 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
         if self.avSession.isRunning {
             self.avSession.stopRunning()
         }
-        
-        if self.previewLayer != nil {
-            self.previewLayer.removeFromSuperlayer()
-        }
     }
     
     
     //开始采集
     @objc private func startCapture() -> Void {
-        if self.previewLayer == nil {
-            self.previewLayer = AVCaptureVideoPreviewLayer.init(session: self.avSession)
-            self.previewLayer.frame = self.preView.bounds
-            self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
-        }
-        if self.previewLayer.superlayer == nil {
-            self.preView.layer?.insertSublayer(self.previewLayer, at: 0)
-        }
-        
         self.avSession.startRunning()
     }
     
