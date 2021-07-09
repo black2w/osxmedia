@@ -1,14 +1,14 @@
 //
-//  MainWindowController.swift
+//  PreViewWindowController.swift
 //  osxmedia
 //
-//  Created by black2w on 2021/7/6.
+//  Created by black2w on 2021/7/9.
 //
 
 import Cocoa
 
-class MainWindowController: BaseWindowController, NSWindowDelegate {
-
+class PreViewWindowController: BaseWindowController , NSWindowDelegate {
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
@@ -26,16 +26,18 @@ class MainWindowController: BaseWindowController, NSWindowDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)),
                                                        name: NSWindow.didResizeNotification, object: nil)
+    
+        self.window?.contentViewController = PreViewController.init(nibName: "PreViewController", bundle: nil)
     }
-
-            
+    
+    
     @objc private func windowDidResize(notification: Notification) {
         let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < PREVIEW_MINHEIGHT ? PREVIEW_MINHEIGHT : self.window?.frame.size.width
         //以宽为基准，强制比例16：9
         let calHeight: CGFloat = calWidth * PREVIEWSCALE
         
         self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
-        let vc: ViewController! = self.contentViewController as? ViewController
+        let vc: PreViewController! = self.contentViewController as? PreViewController
         vc.resizePreviewer()
     }
     
@@ -46,3 +48,4 @@ class MainWindowController: BaseWindowController, NSWindowDelegate {
     }
     
 }
+

@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  PreViewController.swift
 //  osxmedia
 //
-//  Created by black2w on 2021/7/5.
+//  Created by black2w on 2021/7/9.
 //
 
 import Cocoa
 import AVFoundation
 import VideoToolbox
 
-class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, NSMenuDelegate {
+class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, NSMenuDelegate {
     
     var avSession: AVCaptureSession!
     var videoOutput: AVCaptureVideoDataOutput!
@@ -37,6 +37,19 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
         
         // need fix
         //等view布局完成自动开始，
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//            self.startCapture() //默认开始
+//        }
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        self.stopCapture()
+
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.startCapture() //默认开始
         }
@@ -193,4 +206,5 @@ class ViewController: NSViewController, AVCaptureAudioDataOutputSampleBufferDele
  
 
 }
+
 
