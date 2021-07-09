@@ -32,13 +32,13 @@ class PreViewWindowController: BaseWindowController , NSWindowDelegate {
     
     
     @objc private func windowDidResize(notification: Notification) {
-        let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < PREVIEW_MINHEIGHT ? PREVIEW_MINHEIGHT : self.window?.frame.size.width
-        //以宽为基准，强制比例16：9
-        let calHeight: CGFloat = calWidth * PREVIEWSCALE
-        
-        self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
+//        let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < PREVIEW_MINHEIGHT ? PREVIEW_MINHEIGHT : self.window?.frame.size.width
+//        //以宽为基准，强制比例16：9
+//        let calHeight: CGFloat = calWidth * PREVIEWSCALE
+//        
+//        self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
         let vc: PreViewController! = self.contentViewController as? PreViewController
-        vc.resizePreviewer()
+        vc.resizePreviewerByWindow()
         self.window?.center()
     }
     
