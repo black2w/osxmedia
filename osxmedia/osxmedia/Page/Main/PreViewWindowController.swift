@@ -39,6 +39,7 @@ class PreViewWindowController: BaseWindowController , NSWindowDelegate {
         self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
         let vc: PreViewController! = self.contentViewController as? PreViewController
         vc.resizePreviewer()
+        self.window?.center()
     }
     
     
