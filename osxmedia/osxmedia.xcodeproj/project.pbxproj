@@ -24,6 +24,7 @@
 		7C9CB161269889CA008C18DE /* RenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9CB15F269889CA008C18DE /* RenderViewController.xib */; };
 		7C9CB16426988B0C008C18DE /* RenderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB16226988B0C008C18DE /* RenderWindowController.swift */; };
 		7C9CB16526988B0C008C18DE /* RenderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9CB16326988B0C008C18DE /* RenderWindowController.xib */; };
+		7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB1672698A6C3008C18DE /* NSView+Common.swift */; };
 		7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7CE26970EAC0019021F /* MenuManager.swift */; };
 		7CACB7D12697104D0019021F /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7D02697104D0019021F /* DeviceManager.swift */; };
 		7CACB7D426971E690019021F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7D326971E690019021F /* Const.swift */; };
@@ -71,6 +72,7 @@
 		7C9CB15F269889CA008C18DE /* RenderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RenderViewController.xib; sourceTree = "<group>"; };
 		7C9CB16226988B0C008C18DE /* RenderWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderWindowController.swift; sourceTree = "<group>"; };
 		7C9CB16326988B0C008C18DE /* RenderWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RenderWindowController.xib; sourceTree = "<group>"; };
+		7C9CB1672698A6C3008C18DE /* NSView+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Common.swift"; sourceTree = "<group>"; };
 		7CACB7CE26970EAC0019021F /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		7CACB7D02697104D0019021F /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		7CACB7D326971E690019021F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 		7C8839482692CD550074E7D4 /* osxmedia */ = {
 			isa = PBXGroup;
 			children = (
+				7C9CB1662698A5EC008C18DE /* Category */,
 				7CACB7F326975A060019021F /* Info.plist */,
 				7CACB7D226971E4C0019021F /* Const */,
 				7CACB7CD26970E990019021F /* Manager */,
@@ -218,6 +221,14 @@
 				7C9CB16326988B0C008C18DE /* RenderWindowController.xib */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		7C9CB1662698A5EC008C18DE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				7C9CB1672698A6C3008C18DE /* NSView+Common.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		7CACB7CD26970E990019021F /* Manager */ = {
@@ -375,6 +386,7 @@
 			files = (
 				7C8839882693EE2A0074E7D4 /* BaseView.swift in Sources */,
 				7C9CB160269889CA008C18DE /* RenderViewController.swift in Sources */,
+				7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */,
 				7C88398A2693EE3F0074E7D4 /* BaseViewController.swift in Sources */,
 				7C883998269493E30074E7D4 /* Tool.swift in Sources */,
 				7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */,
