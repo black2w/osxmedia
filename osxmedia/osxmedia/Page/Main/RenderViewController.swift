@@ -9,7 +9,7 @@ import Cocoa
 import AVFoundation
 import VideoToolbox
 
-class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, NSMenuDelegate {
+class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureVideoDataOutputSampleBufferDelegate, NSMenuDelegate {
     
     var avSession: AVCaptureSession!
     var videoOutput: AVCaptureVideoDataOutput!
@@ -34,12 +34,6 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
     
     override func viewDidAppear() {
         super.viewDidAppear()
-        
-        // need fix
-        //等view布局完成自动开始，
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            self.startCapture() //默认开始
-//        }
     }
     
     override func viewWillDisappear() {
@@ -52,6 +46,7 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
         super.viewWillAppear()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.startCapture() //默认开始
+            self.resizePreviewerByWindow()
         }
     }
         
@@ -106,7 +101,7 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
     //随动preview
     public func resizePreviewer() -> Void {
         if (self.preView != nil) && (self.previewLayer != nil) {
-            //            self.previewLayer.frame = self.preView.bounds
+
         }
     }
     
@@ -115,29 +110,10 @@ class PreViewController: BaseViewController, AVCaptureAudioDataOutputSampleBuffe
         if (self.preView != nil) && (self.previewLayer != nil) {
             if self.view.window == nil {
                 return
-            }
-            //当前窗口宽
-            let windowWidth: CGFloat! = self.view.window?.frame.size.width
-            //当前窗口高
-            let windowHeight: CGFloat! = self.view.window?.frame.size.height
-            
-    
-            
-            if windowHeight/windowWidth < PREVIEWSCALE {
-                //实际显示的宽度根据高度计算
-                let showWidth: CGFloat! = windowHeight / PREVIEWSCALE
-                let showOrignX = (windowWidth - showWidth)/2.0
-                
-                //如果屏幕高宽比<高宽比，那么以高度为基准
-                self.previewLayer.frame = CGRect(x: showOrignX, y: 0, width: showWidth, height: windowHeight)
             } else {
-                //如果屏幕高宽比>高宽比，那么以宽度为基准
-                //实际显示的高度根据宽度计算
-                let showHeight: CGFloat! = windowWidth * PREVIEWSCALE
-                let showOrignY = (windowHeight - showHeight)/2.0
-                self.previewLayer.frame = CGRect(x: 0, y: showOrignY, width: windowWidth, height: showHeight)
-
-            }        }
+                self.previewLayer.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
+            }
+        }
     }
     
     //切换摄像头

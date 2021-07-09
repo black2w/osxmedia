@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        let  mainWC = PreViewWindowController.init(windowNibName: "PreViewWindowController")
+        let mainWC = RenderWindowController.init(windowNibName: "RenderWindowController")
         mainWC.showWindow(self)
         mainWC.window?.makeKeyAndOrderFront(nil)
         self.mainWindwowController = mainWC

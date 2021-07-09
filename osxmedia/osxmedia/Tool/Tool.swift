@@ -98,6 +98,31 @@ class Tool: NSObject {
     }
     
     
+    //根据窗口生成render的frame
+    class func generatrRenderFrameByWindow(window: NSWindow) -> CGRect {
+        //当前窗口宽
+        let windowWidth: CGFloat! = window.frame.size.width
+        //当前窗口高
+        let windowHeight: CGFloat! = window.frame.size.height
+        
+        if windowHeight/windowWidth < RENDERRATIO {
+            //实际显示的宽度根据高度计算
+            let showWidth: CGFloat! = windowHeight / RENDERRATIO
+            let showOrignX = (windowWidth - showWidth)/2.0
+            
+            //如果屏幕高宽比<高宽比，那么以高度为基准
+            return CGRect(x: showOrignX, y: 0, width: showWidth, height: windowHeight)
+        } else {
+            //如果屏幕高宽比>高宽比，那么以宽度为基准
+            //实际显示的高度根据宽度计算
+            let showHeight: CGFloat! = windowWidth * RENDERRATIO
+            let showOrignY = (windowHeight - showHeight)/2.0
+            return CGRect(x: 0, y: showOrignY, width: windowWidth, height: showHeight)
+
+        }
+    }
+    
+    
     
 }
 
