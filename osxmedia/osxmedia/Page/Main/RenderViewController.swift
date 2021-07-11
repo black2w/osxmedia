@@ -111,7 +111,8 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
             if self.view.window == nil {
                 return
             } else {
-                self.previewLayer.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
+//                self.previewLayer.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
+                self.view.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
             }
         }
     }
