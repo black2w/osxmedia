@@ -28,6 +28,11 @@ let SCREEN_HEIGHT: CGFloat! = {
     return SCREEN_SIZE.height
 } ()
 
+//屏幕数量
+let SCRREENS: NSArray! = {
+    return NSScreen.screens as NSArray
+} ()
+
 //渲染视频高宽比
 let RENDERRATIO: CGFloat! = 9/16.0
 //最大渲染窗口
@@ -62,4 +67,10 @@ let RENDER_DEFAULTSIZE: CGSize! = {
     let defaultHeight = RENDER_MAXSIZE.height * 1/4
     return CGSize(width: defaltWidth, height: defaultHeight)
 }()
+
+enum InputSourceType: Int {
+    case camera = 1
+    case screen
+    case other
+}
 

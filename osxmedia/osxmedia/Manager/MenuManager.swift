@@ -61,19 +61,36 @@ class MenuManager {
     
     
     //设置设备菜单
-    func resetDeviceMenu(selectDevice: AVCaptureDevice, action: Selector) -> Void {
+    func resetDeviceMenu(action: Selector) -> Void {
         self.deviceMenu.removeAllItems()
         
         for (index, device) in DeviceManager.sharedInstance.deviceList.enumerated() {
-            let dev = device as AVCaptureDevice
-            let devItem: NSMenuItem! = NSMenuItem.init(title: dev.localizedName, action: action, keyEquivalent: "")
-            if selectDevice == device {
+            let devobj = device as! DeviceObject
+            
+            let devItem: NSMenuItem!
+            if devobj.captureDevice != nil {
+                devItem = NSMenuItem.init(title: devobj.captureDevice!.localizedName, action: action, keyEquivalent: "")
+            } else {
+                let screen = devobj.screen
+                devItem = NSMenuItem.init(title: screen!.displayName, action: action, keyEquivalent: "")
+            }
+            devobj.tag = index
+            devItem.tag = index
+            self.deviceMenu.addItem(devItem)
+        }
+    }
+    
+    func setSelectDevice(selectDevice: DeviceObject) -> Void {
+        for (index, device) in DeviceManager.sharedInstance.deviceList.enumerated() {
+            _ = device as! DeviceObject
+            
+            let devItem: NSMenuItem! = self.deviceMenu.item(at: index)
+
+            if selectDevice.displayName! as String == devItem.title {
                 devItem.state = NSControl.StateValue.on
             } else {
                 devItem.state = NSControl.StateValue.off
             }
-            devItem.tag = index
-           self.deviceMenu.addItem(devItem)
         }
     }
     

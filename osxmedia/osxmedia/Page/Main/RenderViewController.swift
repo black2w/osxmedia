@@ -15,8 +15,8 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
     var videoOutput: AVCaptureVideoDataOutput!
     var previewLayer: AVCaptureVideoPreviewLayer!
     
-    var currentViDevice: AVCaptureDevice!
-    var videoInput: AVCaptureDeviceInput!
+    var currentViDevice: DeviceObject!
+    var videoInput: Any!  //输入设备
     
     var lastSampleBuffer: CMSampleBuffer!  //最后一帧图像
     
@@ -80,7 +80,7 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         
         if self.avSession == nil {
             self.avSession = AVCaptureSession.init()
-            self.avSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
+//            self.avSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         }
         
         if self.previewLayer == nil {
@@ -93,9 +93,9 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
 
     
         //默认设备
-        let defaultVideoDevice: AVCaptureDevice! = DeviceManager.sharedInstance.deviceList.first
+        let defaultVideoDevice: DeviceObject! = DeviceManager.sharedInstance.deviceList.object(at: 0) as? DeviceObject
         currentViDevice = defaultVideoDevice
-        self.changeCamera(videoDevice: defaultVideoDevice)
+        self.changeInputSource(videoDevice: defaultVideoDevice)
     }
             
     //随动preview
@@ -111,31 +111,42 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
             if self.view.window == nil {
                 return
             } else {
-//                self.previewLayer.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
                 self.view.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
             }
         }
     }
     
     //切换摄像头
-    private func changeCamera(videoDevice: AVCaptureDevice) -> Void {
+    private func changeInputSource(videoDevice: DeviceObject) -> Void {
         self.resetDeviceCapture()
         
         self.currentViDevice = videoDevice
-        MenuManager.sharedInstance.resetDeviceMenu(selectDevice: self.currentViDevice, action: #selector(deviceHasSelect))
+        MenuManager.sharedInstance.resetDeviceMenu(action: #selector(deviceHasSelect))
+        MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
+        
+        if videoDevice.captureDevice != nil {
+            self.videoInput = try! AVCaptureDeviceInput(device: videoDevice.captureDevice!)
+        } else {
+            let screen = videoDevice.screen! as NSScreen
+            let screenId = screen.number
+            
+            self.videoInput = AVCaptureScreenInput.init(displayID: screenId)
+            let vIn = videoInput as! AVCaptureScreenInput
+            vIn.cropRect = screen.frame
+            vIn.minFrameDuration = CMTimeMake(value: 1, timescale: 30)
+        }
 
         
-        self.videoInput = try! AVCaptureDeviceInput(device: videoDevice)
         
         self.videoOutput = AVCaptureVideoDataOutput.init()
-        self.videoOutput.videoSettings = [String.init(kCVPixelBufferPixelFormatTypeKey): NSNumber.init(value: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange),
-                                                  String.init(kCVPixelBufferWidthKey): NSNumber.init(value: 1280),
-                                                  String.init(kCVPixelBufferHeightKey): NSNumber.init(value: 720)]
+//        self.videoOutput.videoSettings = [String.init(kCVPixelBufferPixelFormatTypeKey): NSNumber.init(value: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange),
+//                                                  String.init(kCVPixelBufferWidthKey): NSNumber.init(value: 1280),
+//                                                  String.init(kCVPixelBufferHeightKey): NSNumber.init(value: 720)]
         self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
 
                 
-        if self.avSession.canAddInput(videoInput) {
-            self.avSession.addInput(videoInput)
+        if self.avSession.canAddInput(self.videoInput! as! AVCaptureInput) {
+            self.avSession.addInput(self.videoInput as! AVCaptureInput)
         }
 
         if self.avSession.canAddOutput(self.videoOutput) {
@@ -150,7 +161,7 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         }
         
         if self.videoInput != nil {
-            self.avSession.removeInput(self.videoInput)
+            self.avSession.removeInput(self.videoInput as! AVCaptureInput)
         }
     }
     
@@ -173,7 +184,7 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
             self.previewLayer.connection?.isEnabled = false
             let data: NSData! = Tool.getDataFromCMSampleBuffer(sampleBuffer: self.lastSampleBuffer)
             Tool.showSaveImagePanel(imageData: data, fileName: Tool.currentTime() as NSString) { (finish) in
-                self.changeCamera(videoDevice: self.currentViDevice)
+                self.changeInputSource(videoDevice: self.currentViDevice)
                 self.previewLayer.connection?.isEnabled = true
             }
         }
@@ -186,7 +197,7 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         let videoDevice = DeviceManager.sharedInstance.deviceList[index]
         
         self.stopCapture()
-        self.changeCamera(videoDevice: videoDevice)
+        self.changeInputSource(videoDevice: videoDevice as! DeviceObject)
         self.startCapture()
         
     }
@@ -195,8 +206,9 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
     //nenu delegate
     func menuWillOpen(_ menu: NSMenu) {
         DeviceManager.sharedInstance.refreshDeviceList()
-        MenuManager.sharedInstance.resetDeviceMenu(selectDevice: self.currentViDevice, action:
+        MenuManager.sharedInstance.resetDeviceMenu(action:
                                                    #selector(deviceHasSelect))
+        MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
     }
 
     //capture delegate
