@@ -9,11 +9,21 @@ import Cocoa
 
 class RenderWindowController: BaseWindowController , NSWindowDelegate {
     
+    @IBOutlet weak var leftView: NSView!
+    @IBOutlet weak var rightView: NSView!
+    
+    var leftVc: RenderViewController! = {
+        return RenderViewController.init(nibName: "RenderViewController", bundle: nil)
+    } ()
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
-        self.window?.backgroundColor = NSColor.black
-
+        self.configLeftAndRight()
+    }
+    
+    override func configWindow() {
+        super.configWindow()
         // 设置 window 能显示的最大 frame
         self.window?.setFrame(NSRect(origin: CGPoint.zero, size: RENDER_MAXSIZE), display: true)
         // 设置 window 能显示的最小 frame
@@ -22,23 +32,19 @@ class RenderWindowController: BaseWindowController , NSWindowDelegate {
         self.window?.center()
         self.window?.delegate = self
         self.window?.orderOut(nil)
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)),
-                                                       name: NSWindow.didResizeNotification, object: nil)
-    
-        self.window?.contentViewController = RenderViewController.init(nibName: "RenderViewController", bundle: nil)
     }
     
+    override func configMyCotentVc() {
+//        self.window?.contentViewController = RenderViewController.init(nibName: "RenderViewController", bundle: nil)
+    }
     
-    @objc private func windowDidResize(notification: Notification) {
-//        let calWidth: CGFloat! = (self.window?.frame.size.width ?? 0) < RENDER_MINHEIGHT ? RENDER_MINHEIGHT : self.window?.frame.size.width
-//        //以宽为基准，强制比例16：9
-//        let calHeight: CGFloat = calWidth * RENDERRATIO
-//        
-//        self.window?.setContentSize(NSSize(width: calWidth, height: calHeight))
-        let vc: RenderViewController! = self.contentViewController as? RenderViewController
-        vc.resizePreviewerByWindow()
+    func configLeftAndRight() -> Void {
+        self.leftView.addSubview(self.leftVc.view)
+    }
+    
+    @objc override func windowDidResize(notification: Notification) {
+//        let vc: RenderViewController! = self.contentViewController as? RenderViewController
+//        vc.resizePreviewerByWindow()
         self.window?.center()
     }
     

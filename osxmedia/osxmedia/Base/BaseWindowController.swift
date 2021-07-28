@@ -11,8 +11,31 @@ class BaseWindowController: NSWindowController {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        self.configWindow()
+        self.configMyCotentVc()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)),
+                                                       name: NSWindow.didResizeNotification, object: nil)
+    }
+    
+    override func windowWillLoad() {
+        super.windowWillLoad()
+    }
+    
+    override func loadWindow() {
+        super.loadWindow()
+    }
+    
+    func configWindow() -> Void {
+        self.window?.backgroundColor = NSColor.black
+    }
+    
+    func configMyCotentVc() -> Void {
+        
+    }
+    
+    @objc func windowDidResize(notification: Notification) {
 
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
     }
     
 }
