@@ -27,6 +27,7 @@ class DeviceManager {
     //刷新设备列表
     func refreshDeviceList() -> Void {
         self.deviceList.removeAllObjects()
+        
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes:
             [.builtInMicrophone, .externalUnknown, .builtInWideAngleCamera],
             mediaType: .video, position: .unspecified)
@@ -54,7 +55,4 @@ class DeviceManager {
             self.deviceList.add(screenObj!)
         }
     }
-
-    
-    
 }

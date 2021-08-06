@@ -35,7 +35,7 @@ let SCRREENS: NSArray! = {
 
 //渲染视频高宽比
 let RENDERRATIO: CGFloat! = 9/16.0
-//最大渲染窗口
+//单个显示最大渲染窗口
 let RENDER_MAXSIZE: CGSize! = {
     if SCREEN_HEIGHT/SCREEN_WIDTH < RENDERRATIO {
         //如果屏幕高宽比<高宽比，那么以高度为基准
@@ -74,3 +74,39 @@ enum InputSourceType: Int {
     case other
 }
 
+
+//以下用于一个窗口渲染两个view的时候
+let RENDER_TWO_RATIO: CGFloat! = 9/32.0
+
+//两个显示最大渲染窗口
+let RENDER_TWOSCREEN_MAXSIZE: CGSize! = {
+    if SCREEN_HEIGHT/SCREEN_WIDTH < RENDERRATIO {
+        //如果屏幕高宽比<高宽比，那么以高度为基准
+        return CGSize(width: SCREEN_HEIGHT/RENDERRATIO, height: SCREEN_HEIGHT)
+    }else {
+        //如果屏幕高宽比>高宽比，那么以宽度为基准
+        return CGSize(width: SCREEN_WIDTH, height: SCREEN_WIDTH*RENDERRATIO)
+    }
+} ()
+
+//最小渲染宽度
+let RENDER_TWOSCREEN_MINWIDTH: CGFloat! = {
+    return 640.0
+} ()
+
+//最小渲染高度
+let RENDER_TWOSCREEN_MINHEIGHT: CGFloat! = {
+    return 360
+} ()
+
+//最小渲染窗口
+let RENDER_TWOSCREEN_MINSIZE: CGSize! = {
+ return CGSize(width: RENDER_MINWIDTH, height: RENDER_MINHEIGHT)
+}()
+
+//渲染窗口默认大小
+let RENDER_TWOSCREEN_DEFAULTSIZE: CGSize! = {
+    let defaltWidth = RENDER_MAXSIZE.width * 1/4
+    let defaultHeight = RENDER_MAXSIZE.height * 1/4
+    return CGSize(width: defaltWidth, height: defaultHeight)
+}()

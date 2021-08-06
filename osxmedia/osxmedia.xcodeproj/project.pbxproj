@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB1672698A6C3008C18DE /* NSView+Common.swift */; };
 		7CA510FF26A44DE100F9822F /* DeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA510FE26A44DE100F9822F /* DeviceObject.swift */; };
 		7CA5110126A460B200F9822F /* NSScreenExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA5110026A460B200F9822F /* NSScreenExt.swift */; };
+		7CA6CA5F26BD0AF000B642B8 /* AVRenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA6CA5E26BD0AF000B642B8 /* AVRenderViewController.swift */; };
 		7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7CE26970EAC0019021F /* MenuManager.swift */; };
 		7CACB7D12697104D0019021F /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7D02697104D0019021F /* DeviceManager.swift */; };
 		7CACB7D426971E690019021F /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7D326971E690019021F /* Const.swift */; };
@@ -78,6 +79,7 @@
 		7C9CB1672698A6C3008C18DE /* NSView+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Common.swift"; sourceTree = "<group>"; };
 		7CA510FE26A44DE100F9822F /* DeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceObject.swift; sourceTree = "<group>"; };
 		7CA5110026A460B200F9822F /* NSScreenExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSScreenExt.swift; sourceTree = "<group>"; };
+		7CA6CA5E26BD0AF000B642B8 /* AVRenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVRenderViewController.swift; sourceTree = "<group>"; };
 		7CACB7CE26970EAC0019021F /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		7CACB7D02697104D0019021F /* DeviceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		7CACB7D326971E690019021F /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
@@ -131,7 +133,6 @@
 				9EA3C27A3AA07D246EE388F6 /* Pods-osxmedia.debug.xcconfig */,
 				91DE104C2096D1D280ACC00C /* Pods-osxmedia.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -241,6 +242,7 @@
 				7C9CB15F269889CA008C18DE /* RenderViewController.xib */,
 				7C9CB16226988B0C008C18DE /* RenderWindowController.swift */,
 				7C9CB16326988B0C008C18DE /* RenderWindowController.xib */,
+				7CA6CA5E26BD0AF000B642B8 /* AVRenderViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -460,6 +462,7 @@
 				7C883998269493E30074E7D4 /* Tool.swift in Sources */,
 				7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */,
 				7C9CB16426988B0C008C18DE /* RenderWindowController.swift in Sources */,
+				7CA6CA5F26BD0AF000B642B8 /* AVRenderViewController.swift in Sources */,
 				7C88394A2692CD550074E7D4 /* AppDelegate.swift in Sources */,
 				7CACB7D12697104D0019021F /* DeviceManager.swift in Sources */,
 				7C88398D2693EE560074E7D4 /* BaseWindowController.swift in Sources */,

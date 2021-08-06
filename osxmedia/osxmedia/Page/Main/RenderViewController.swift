@@ -46,7 +46,6 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         super.viewWillAppear()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.startCapture() //默认开始
-            self.resizePreviewerByWindow()
         }
     }
         
@@ -66,13 +65,12 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         }
     }
     
-    private func defaultSetting() -> Void {
-        //菜单item事件
-        MenuManager.sharedInstance.deviceMenu.delegate = self
-        MenuManager.sharedInstance.startMenuItem.action = #selector(startCapture)
-        MenuManager.sharedInstance.stopMenuItem.action = #selector(stopCapture)
-        MenuManager.sharedInstance.captureMenuItem.action = #selector(captureImage)
-        
+    override func defaultSetting() -> Void {
+        self.setMenu()
+        self.setAv()
+    }
+    
+    private func setAv() -> Void {
         //preview set
         self.preView.layer?.backgroundColor = NSColor.lightGray.cgColor
         self.preView.layer?.borderWidth = 2
@@ -80,7 +78,6 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         
         if self.avSession == nil {
             self.avSession = AVCaptureSession.init()
-//            self.avSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         }
         
         if self.previewLayer == nil {
@@ -97,25 +94,16 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         currentViDevice = defaultVideoDevice
         self.changeInputSource(videoDevice: defaultVideoDevice)
     }
+    
+    private func setMenu() -> Void {
+        //菜单item事件
+        MenuManager.sharedInstance.deviceMenu.delegate = self
+        MenuManager.sharedInstance.startMenuItem.action = #selector(startCapture)
+        MenuManager.sharedInstance.stopMenuItem.action = #selector(stopCapture)
+        MenuManager.sharedInstance.captureMenuItem.action = #selector(captureImage)
+    }
             
-    //随动preview
-    public func resizePreviewer() -> Void {
-        if (self.preView != nil) && (self.previewLayer != nil) {
 
-        }
-    }
-    
-    //根据window的大小进行resize
-    public func resizePreviewerByWindow() -> Void {
-        if (self.preView != nil) && (self.previewLayer != nil) {
-            if self.view.window == nil {
-                return
-            } else {
-                self.view.frame = Tool.generatrRenderFrameByWindow(window: self.view.window!)
-            }
-        }
-    }
-    
     //切换摄像头
     private func changeInputSource(videoDevice: DeviceObject) -> Void {
         self.resetDeviceCapture()
@@ -139,9 +127,6 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
         
         
         self.videoOutput = AVCaptureVideoDataOutput.init()
-//        self.videoOutput.videoSettings = [String.init(kCVPixelBufferPixelFormatTypeKey): NSNumber.init(value: kCVPixelFormatType_420YpCbCr8BiPlanarVideoRange),
-//                                                  String.init(kCVPixelBufferWidthKey): NSNumber.init(value: 1280),
-//                                                  String.init(kCVPixelBufferHeightKey): NSNumber.init(value: 720)]
         self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
 
                 
@@ -210,6 +195,7 @@ class RenderViewController: BaseViewController, AVCaptureAudioDataOutputSampleBu
                                                    #selector(deviceHasSelect))
         MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
     }
+    
 
     //capture delegate
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {

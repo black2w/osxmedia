@@ -13,6 +13,7 @@ class BaseViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         self.configVC()
+        self.defaultSetting()
     }
     
     override func viewWillAppear() {
@@ -32,6 +33,10 @@ class BaseViewController: NSViewController {
     }
     
     func configVC() -> Void {
+        
+    }
+    
+    func defaultSetting() -> Void {
         
     }
     

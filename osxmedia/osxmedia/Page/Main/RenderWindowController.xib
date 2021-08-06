@@ -17,34 +17,38 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="680" height="200"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="680" height="200"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Td2-zL-KL8">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="270"/>
+                        <rect key="frame" x="0.0" y="4" width="340" height="192"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Td2-zL-KL8" secondAttribute="height" multiplier="16:9" id="0Ip-VD-NXd"/>
+                        </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="Wpx-Nm-MYz">
-                        <rect key="frame" x="240" y="0.0" width="240" height="270"/>
+                        <rect key="frame" x="340" y="4" width="340" height="192"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Wpx-Nm-MYz" secondAttribute="height" multiplier="16:9" id="jMu-8A-g75"/>
+                        </constraints>
                     </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Wpx-Nm-MYz" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="LsG-M3-uTp"/>
-                    <constraint firstAttribute="bottom" secondItem="Td2-zL-KL8" secondAttribute="bottom" id="Ood-gR-xMj"/>
                     <constraint firstItem="Wpx-Nm-MYz" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" multiplier="0.5" id="Qwp-re-Gaw"/>
-                    <constraint firstAttribute="bottom" secondItem="Wpx-Nm-MYz" secondAttribute="bottom" id="c8H-T3-Dqt"/>
                     <constraint firstAttribute="trailing" secondItem="Wpx-Nm-MYz" secondAttribute="trailing" id="kJ8-E8-rQU"/>
-                    <constraint firstItem="Td2-zL-KL8" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="nAT-pI-wC9"/>
                     <constraint firstItem="Td2-zL-KL8" firstAttribute="width" secondItem="se5-gp-TjO" secondAttribute="width" multiplier="0.5" id="sWH-dw-ykq"/>
+                    <constraint firstItem="Td2-zL-KL8" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="sw8-wj-1Ev"/>
+                    <constraint firstItem="Wpx-Nm-MYz" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="tBB-uc-qzE"/>
                     <constraint firstItem="Td2-zL-KL8" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="xFQ-TJ-cFc"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="4" y="135"/>
+            <point key="canvasLocation" x="-96" y="52"/>
         </window>
     </objects>
 </document>

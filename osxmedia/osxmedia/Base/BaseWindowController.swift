@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class BaseWindowController: NSWindowController {
+class BaseWindowController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -34,8 +34,18 @@ class BaseWindowController: NSWindowController {
         
     }
     
+    func defaultSetting() -> Void{
+        
+    }
+    
     @objc func windowDidResize(notification: Notification) {
+        self.window?.center()
+    }
 
+    
+    //Mark: Window Delegate
+    func windowShouldClose(sender: AnyObject) -> Bool {
+        return false
     }
     
 }
