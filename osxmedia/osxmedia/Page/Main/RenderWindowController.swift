@@ -21,6 +21,11 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
         return AVCapturePreViewController.init(nibName: "AVCapturePreViewController", bundle: nil)
     } ()
     
+    //右边vc
+    var samBufferDisplayVc: SampleBufferDisplayViewController! = {
+        return SampleBufferDisplayViewController.init(nibName: "SampleBufferDisplayViewController", bundle: nil)
+    } ()
+    
     //当前选择的设备
     var currentViDevice: DeviceObject!
     var lastSampleBuffer: CMSampleBuffer!  //最后一帧图像
@@ -71,6 +76,11 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
         self.avCaptureVc.view.snp_makeConstraints { (make) in
             make.edges.equalTo(self.leftView)
         }
+        
+        self.rightView.addSubview(self.samBufferDisplayVc.view)
+        self.samBufferDisplayVc.view.snp_makeConstraints { (make) in
+            make.edges.equalTo(self.rightView)
+        }
     }
     
     func configDevice() -> Void {
@@ -88,6 +98,7 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
     //AVRenderViewControllerDelegate
     func didVideoDataOutPut(sampleBuffer: CMSampleBuffer) {
         self.lastSampleBuffer = sampleBuffer
+        self.samBufferDisplayVc.sampleBuffer = sampleBuffer
     }
 }
 
@@ -143,9 +154,6 @@ extension RenderWindowController {
     @objc private func stopRender() -> Void {
         self.avCaptureVc.stopCapture()
     }
-    
-    
-
     
     //截图
     @objc private func captureImage() -> Void {

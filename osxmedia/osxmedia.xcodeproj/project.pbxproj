@@ -27,6 +27,8 @@
 		7C9E2DA526BEBEBE0063E82F /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA326BEBEBE0063E82F /* TestViewController.xib */; };
 		7C9E2DA826BEC0C00063E82F /* AVCapturePreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA626BEC0C00063E82F /* AVCapturePreViewController.swift */; };
 		7C9E2DA926BEC0C00063E82F /* AVCapturePreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA726BEC0C00063E82F /* AVCapturePreViewController.xib */; };
+		7C9E2DAC26BED7900063E82F /* SampleBufferDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E2DAA26BED7900063E82F /* SampleBufferDisplayViewController.swift */; };
+		7C9E2DAD26BED7900063E82F /* SampleBufferDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E2DAB26BED7900063E82F /* SampleBufferDisplayViewController.xib */; };
 		7CA510FF26A44DE100F9822F /* DeviceObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA510FE26A44DE100F9822F /* DeviceObject.swift */; };
 		7CA5110126A460B200F9822F /* NSScreenExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA5110026A460B200F9822F /* NSScreenExt.swift */; };
 		7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CACB7CE26970EAC0019021F /* MenuManager.swift */; };
@@ -80,6 +82,8 @@
 		7C9E2DA326BEBEBE0063E82F /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		7C9E2DA626BEC0C00063E82F /* AVCapturePreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCapturePreViewController.swift; sourceTree = "<group>"; };
 		7C9E2DA726BEC0C00063E82F /* AVCapturePreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVCapturePreViewController.xib; sourceTree = "<group>"; };
+		7C9E2DAA26BED7900063E82F /* SampleBufferDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferDisplayViewController.swift; sourceTree = "<group>"; };
+		7C9E2DAB26BED7900063E82F /* SampleBufferDisplayViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleBufferDisplayViewController.xib; sourceTree = "<group>"; };
 		7CA510FE26A44DE100F9822F /* DeviceObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceObject.swift; sourceTree = "<group>"; };
 		7CA5110026A460B200F9822F /* NSScreenExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSScreenExt.swift; sourceTree = "<group>"; };
 		7CACB7CE26970EAC0019021F /* MenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 				7C9E2DA326BEBEBE0063E82F /* TestViewController.xib */,
 				7C9E2DA626BEC0C00063E82F /* AVCapturePreViewController.swift */,
 				7C9E2DA726BEC0C00063E82F /* AVCapturePreViewController.xib */,
+				7C9E2DAA26BED7900063E82F /* SampleBufferDisplayViewController.swift */,
+				7C9E2DAB26BED7900063E82F /* SampleBufferDisplayViewController.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -391,6 +397,7 @@
 				7C88398E2693EE560074E7D4 /* BaseWindowController.xib in Resources */,
 				7C88394E2692CD5B0074E7D4 /* Assets.xcassets in Resources */,
 				7C8839512692CD5B0074E7D4 /* Main.storyboard in Resources */,
+				7C9E2DAD26BED7900063E82F /* SampleBufferDisplayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +476,7 @@
 				7C9E2DA426BEBEBE0063E82F /* TestViewController.swift in Sources */,
 				7C88394A2692CD550074E7D4 /* AppDelegate.swift in Sources */,
 				7CACB7D12697104D0019021F /* DeviceManager.swift in Sources */,
+				7C9E2DAC26BED7900063E82F /* SampleBufferDisplayViewController.swift in Sources */,
 				7C88398D2693EE560074E7D4 /* BaseWindowController.swift in Sources */,
 				7CACB7D426971E690019021F /* Const.swift in Sources */,
 			);
