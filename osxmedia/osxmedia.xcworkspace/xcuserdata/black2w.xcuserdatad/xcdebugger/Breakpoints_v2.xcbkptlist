@@ -7,38 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E210E3E4-4CDF-4AF0-BB60-27B508A93BB5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "osxmedia/Page/Main/RenderWindowController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "leftVc"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "29E2E117-4527-4A29-A1E4-85A856D6E1AD"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "osxmedia/Page/Main/RenderWindowController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "leftVc"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "64F1E309-A79B-4888-A49A-803907D1A251"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -46,10 +14,10 @@
             filePath = "osxmedia/Page/Main/RenderWindowController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
-            landmarkName = "leftVc"
-            landmarkType = "24">
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "didVideoDataOutPut(sampleBuffer:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -62,9 +30,9 @@
             filePath = "osxmedia/Page/Main/RenderWindowController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "setMenu()"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "menuWillOpen(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -78,10 +46,74 @@
             filePath = "osxmedia/Page/Main/RenderWindowController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
-            landmarkName = "leftVc"
-            landmarkType = "24">
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "setMenu()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5BA9D33B-A29C-4945-9EFF-0CCA57FED70A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "osxmedia/Page/Main/RenderWindowController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "configDevice()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "15984C1C-E863-46A2-A845-10440904218D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "osxmedia/Page/Main/RenderWindowController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "configLeftAndRight()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "15984C1C-E863-46A2-A845-10440904218D - 80628a9fd10a95c9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "osxmedia.RenderWindowController.configLeftAndRight() -&gt; ()"
+                  moduleName = "osxmedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/black2w/Documents/GitHub/osxmedia/osxmedia/osxmedia/Page/Main/RenderWindowController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "536">
+               </Location>
+               <Location
+                  uuid = "15984C1C-E863-46A2-A845-10440904218D - c28eee1e45722b5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (SnapKit.ConstraintMaker) -&gt; () in osxmedia.RenderWindowController.configLeftAndRight() -&gt; ()"
+                  moduleName = "osxmedia"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/black2w/Documents/GitHub/osxmedia/osxmedia/osxmedia/Page/Main/RenderWindowController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "87">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -13,9 +13,8 @@ class BaseWindowController: NSWindowController, NSWindowDelegate {
         super.windowDidLoad()
         self.configWindow()
         self.configMyCotentVc()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)),
-                                                       name: NSWindow.didResizeNotification, object: nil)
+        self.defaultSetting()
+        self.addNotification()
     }
     
     override func windowWillLoad() {
@@ -36,6 +35,11 @@ class BaseWindowController: NSWindowController, NSWindowDelegate {
     
     func defaultSetting() -> Void{
         
+    }
+    
+    func addNotification() -> Void {
+        NotificationCenter.default.addObserver(self, selector: #selector(windowDidResize(notification:)),
+                                                       name: NSWindow.didResizeNotification, object: nil)
     }
     
     @objc func windowDidResize(notification: Notification) {

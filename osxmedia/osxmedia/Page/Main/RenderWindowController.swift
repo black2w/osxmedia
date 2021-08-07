@@ -11,21 +11,23 @@ import AVFoundation
 import VideoToolbox
 
 
-class RenderWindowController: BaseWindowController, AVRenderViewControllerDelegate {
+class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDelegate {
 
     @IBOutlet weak var leftView: NSView!
     @IBOutlet weak var rightView: NSView!
 
     //左边vc
-    var leftVc: AVRenderViewController! = {
-        return AVRenderViewController.init()
+    var avCaptureVc: AVCapturePreViewController! = {
+        return AVCapturePreViewController.init(nibName: "AVCapturePreViewController", bundle: nil)
     } ()
     
-    
+    //当前选择的设备
+    var currentViDevice: DeviceObject!
+    var lastSampleBuffer: CMSampleBuffer!  //最后一帧图像
+
     
     override func windowDidLoad() {
         super.windowDidLoad()
-        
         self.configLeftAndRight()
     }
     
@@ -42,12 +44,20 @@ class RenderWindowController: BaseWindowController, AVRenderViewControllerDelega
     }
     
     override func configMyCotentVc() {
-        self.leftVc.videoDataDelegate = self
         
     }
     
     override func defaultSetting() {
         super.defaultSetting()
+        
+        self.leftView.wantsLayer = true;///设置背景颜色
+        self.leftView.layer!.backgroundColor = NSColor.red.cgColor
+        
+        self.rightView.wantsLayer = true;///设置背景颜色
+        self.rightView.layer!.backgroundColor = NSColor.blue.cgColor
+        
+        
+        self.configDevice()
         self.setMenu()
     }
     
@@ -56,12 +66,19 @@ class RenderWindowController: BaseWindowController, AVRenderViewControllerDelega
     }
     
     func configLeftAndRight() -> Void {
-        self.leftView.addSubview(self.leftVc.view)
-        self.leftVc.view.snp_makeConstraints { (make) in
+        self.avCaptureVc.videoDataDelegate = self
+        self.leftView.addSubview(self.avCaptureVc.view)
+        self.avCaptureVc.view.snp_makeConstraints { (make) in
             make.edges.equalTo(self.leftView)
         }
-        
-        self.leftVc.view.frame = self.leftView.frame
+    }
+    
+    func configDevice() -> Void {
+        //默认设备
+        let defaultVideoDevice: DeviceObject! = DeviceManager.sharedInstance.deviceList.object(at: 0) as? DeviceObject
+        self.currentViDevice = defaultVideoDevice
+        self.changeInputSource(videoDevice: defaultVideoDevice)
+
     }
     
     
@@ -70,7 +87,7 @@ class RenderWindowController: BaseWindowController, AVRenderViewControllerDelega
     
     //AVRenderViewControllerDelegate
     func didVideoDataOutPut(sampleBuffer: CMSampleBuffer) {
-        
+        self.lastSampleBuffer = sampleBuffer
     }
 }
 
@@ -86,23 +103,45 @@ extension RenderWindowController: NSMenuDelegate {
     
     //nenu delegate
     func menuWillOpen(_ menu: NSMenu) {
+        //这边的目的，是每次打开时刷新下设备列表。解决应用运行期间，有设备插拔。需要用设备通知的方式处理
         DeviceManager.sharedInstance.refreshDeviceList()
-//        MenuManager.sharedInstance.resetDeviceMenu(action:
-//                                                   #selector(deviceHasSelect))
-//        MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
+        MenuManager.sharedInstance.resetDeviceMenu(action:
+                                                   #selector(deviceHasSelect))
+        MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
+    }
+}
+
+extension RenderWindowController {
+    //切换设备
+    @objc private func deviceHasSelect(item: NSMenuItem) -> Void {
+        let index: Int = item.tag
+        let videoDevice = DeviceManager.sharedInstance.deviceList[index]
+        MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
+
+        
+        self.stopRender()
+        self.changeInputSource(videoDevice: videoDevice as! DeviceObject)
+        self.startRender()
+    }
+    
+    //切换摄像头
+    private func changeInputSource(videoDevice: DeviceObject) -> Void {
+        self.currentViDevice  = videoDevice
+        self.avCaptureVc.deviceObject = videoDevice
+        
     }
 }
 
 extension RenderWindowController {
     //开始渲染
     @objc private func startRender() -> Void {
-
+        self.avCaptureVc.startCapture()
     }
     
     
     //结束渲染
     @objc private func stopRender() -> Void {
-
+        self.avCaptureVc.stopCapture()
     }
     
     
@@ -110,14 +149,14 @@ extension RenderWindowController {
     
     //截图
     @objc private func captureImage() -> Void {
-//        if self.lastSampleBuffer != nil {
-//            self.previewLayer.connection?.isEnabled = false
-//            let data: NSData! = Tool.getDataFromCMSampleBuffer(sampleBuffer: self.lastSampleBuffer)
-//            Tool.showSaveImagePanel(imageData: data, fileName: Tool.currentTime() as NSString) { (finish) in
-//                self.changeInputSource(videoDevice: self.currentViDevice)
-//                self.previewLayer.connection?.isEnabled = true
-//            }
-//        }
+        if self.lastSampleBuffer != nil {
+            self.avCaptureVc.pausePreview()
+            let data: NSData! = Tool.getDataFromCMSampleBuffer(sampleBuffer: self.lastSampleBuffer)
+            Tool.showSaveImagePanel(imageData: data, fileName: Tool.currentTime() as NSString) { (finish) in
+                self.changeInputSource(videoDevice: self.currentViDevice)
+                self.avCaptureVc.resumePreview()
+            }
+        }
     }
 }
 
