@@ -18,7 +18,7 @@ class DeviceManager {
         return NSMutableArray.init()
     } ()
     
-    private init() {
+    init() {
         self.refreshDeviceList()
     }
 

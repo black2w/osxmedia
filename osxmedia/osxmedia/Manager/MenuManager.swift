@@ -63,7 +63,7 @@ class MenuManager {
     //设置设备菜单
     func resetDeviceMenu(action: Selector) -> Void {
         self.deviceMenu.removeAllItems()
-        
+                
         for (index, device) in DeviceManager.sharedInstance.deviceList.enumerated() {
             let devobj = device as! DeviceObject
             

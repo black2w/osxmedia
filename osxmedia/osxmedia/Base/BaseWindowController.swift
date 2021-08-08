@@ -8,6 +8,10 @@
 import Cocoa
 
 class BaseWindowController: NSWindowController, NSWindowDelegate {
+    
+    var deviceManager: DeviceManager! = {
+        return DeviceManager.init()
+    } ()
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -53,3 +57,4 @@ class BaseWindowController: NSWindowController, NSWindowDelegate {
     }
     
 }
+

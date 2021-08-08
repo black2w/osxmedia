@@ -55,11 +55,11 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
     override func defaultSetting() {
         super.defaultSetting()
         
-        self.leftView.wantsLayer = true;///设置背景颜色
-        self.leftView.layer!.backgroundColor = NSColor.red.cgColor
-        
-        self.rightView.wantsLayer = true;///设置背景颜色
-        self.rightView.layer!.backgroundColor = NSColor.blue.cgColor
+//        self.leftView.wantsLayer = true;///设置背景颜色
+//        self.leftView.layer!.backgroundColor = NSColor.red.cgColor
+//
+//        self.rightView.wantsLayer = true;///设置背景颜色
+//        self.rightView.layer!.backgroundColor = NSColor.blue.cgColor
         
         
         self.configDevice()
@@ -85,7 +85,7 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
     
     func configDevice() -> Void {
         //默认设备
-        let defaultVideoDevice: DeviceObject! = DeviceManager.sharedInstance.deviceList.object(at: 0) as? DeviceObject
+        let defaultVideoDevice: DeviceObject! = self.deviceManager.deviceList.object(at: 0) as? DeviceObject
         self.currentViDevice = defaultVideoDevice
         self.changeInputSource(videoDevice: defaultVideoDevice)
 
@@ -115,7 +115,7 @@ extension RenderWindowController: NSMenuDelegate {
     //nenu delegate
     func menuWillOpen(_ menu: NSMenu) {
         //这边的目的，是每次打开时刷新下设备列表。解决应用运行期间，有设备插拔。需要用设备通知的方式处理
-        DeviceManager.sharedInstance.refreshDeviceList()
+        self.deviceManager.refreshDeviceList()
         MenuManager.sharedInstance.resetDeviceMenu(action:
                                                    #selector(deviceHasSelect))
         MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
@@ -126,7 +126,7 @@ extension RenderWindowController {
     //切换设备
     @objc private func deviceHasSelect(item: NSMenuItem) -> Void {
         let index: Int = item.tag
-        let videoDevice = DeviceManager.sharedInstance.deviceList[index]
+        let videoDevice = self.deviceManager.deviceList[index]
         MenuManager.sharedInstance.setSelectDevice(selectDevice: self.currentViDevice)
 
         
