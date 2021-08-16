@@ -98,7 +98,11 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
     //AVRenderViewControllerDelegate
     func didVideoDataOutPut(sampleBuffer: CMSampleBuffer) {
         self.lastSampleBuffer = sampleBuffer
-        self.samBufferDisplayVc.sampleBuffer = sampleBuffer
+        
+        //sambuffer编辑        
+        let testSample = Tool.modifySamBufferTOY(sampleBuffer: sampleBuffer)
+        
+        self.samBufferDisplayVc.sampleBuffer = testSample
     }
 }
 

@@ -122,6 +122,19 @@ class Tool: NSObject {
         }
     }
     
+    class func modifySamBufferTOY(sampleBuffer: CMSampleBuffer) -> CMSampleBuffer? {
+        let pixelBuffer = CMSampleBufferGetImageBuffer (sampleBuffer)
+//        let height = CVPixelBufferGetHeight(pixelBuffer!)
+//        let width = CVPixelBufferGetWidth(pixelBuffer!)
+        
+//        pixelBuffer?.centerThumbnail(ofSize: CGSize(width: 100, height: 100))
+   
+        let copy = pixelBuffer?.copy()
+            
+        
+        return sampleBuffer
+    }
+    
     
     
 }

@@ -20,6 +20,8 @@
 		7C88398D2693EE560074E7D4 /* BaseWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C88398B2693EE560074E7D4 /* BaseWindowController.swift */; };
 		7C88398E2693EE560074E7D4 /* BaseWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C88398C2693EE560074E7D4 /* BaseWindowController.xib */; };
 		7C883998269493E30074E7D4 /* Tool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C883997269493E30074E7D4 /* Tool.swift */; };
+		7C9193B326C50C0500CEA07E /* CMSampleBuffer+osxmedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9193B226C50C0500CEA07E /* CMSampleBuffer+osxmedia.swift */; };
+		7C9193B526C511A500CEA07E /* CVPixelBuffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9193B426C511A500CEA07E /* CVPixelBuffer+Extension.swift */; };
 		7C9CB16426988B0C008C18DE /* RenderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB16226988B0C008C18DE /* RenderWindowController.swift */; };
 		7C9CB16526988B0C008C18DE /* RenderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9CB16326988B0C008C18DE /* RenderWindowController.xib */; };
 		7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB1672698A6C3008C18DE /* NSView+Common.swift */; };
@@ -75,6 +77,8 @@
 		7C88398B2693EE560074E7D4 /* BaseWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseWindowController.swift; sourceTree = "<group>"; };
 		7C88398C2693EE560074E7D4 /* BaseWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseWindowController.xib; sourceTree = "<group>"; };
 		7C883997269493E30074E7D4 /* Tool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tool.swift; sourceTree = "<group>"; };
+		7C9193B226C50C0500CEA07E /* CMSampleBuffer+osxmedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBuffer+osxmedia.swift"; sourceTree = "<group>"; };
+		7C9193B426C511A500CEA07E /* CVPixelBuffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Extension.swift"; sourceTree = "<group>"; };
 		7C9CB16226988B0C008C18DE /* RenderWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderWindowController.swift; sourceTree = "<group>"; };
 		7C9CB16326988B0C008C18DE /* RenderWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RenderWindowController.xib; sourceTree = "<group>"; };
 		7C9CB1672698A6C3008C18DE /* NSView+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Common.swift"; sourceTree = "<group>"; };
@@ -261,6 +265,8 @@
 			children = (
 				7C9CB1672698A6C3008C18DE /* NSView+Common.swift */,
 				7CA5110026A460B200F9822F /* NSScreenExt.swift */,
+				7C9193B226C50C0500CEA07E /* CMSampleBuffer+osxmedia.swift */,
+				7C9193B426C511A500CEA07E /* CVPixelBuffer+Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -467,12 +473,14 @@
 				7C8839882693EE2A0074E7D4 /* BaseView.swift in Sources */,
 				7CA510FF26A44DE100F9822F /* DeviceObject.swift in Sources */,
 				7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */,
+				7C9193B526C511A500CEA07E /* CVPixelBuffer+Extension.swift in Sources */,
 				7CA5110126A460B200F9822F /* NSScreenExt.swift in Sources */,
 				7C88398A2693EE3F0074E7D4 /* BaseViewController.swift in Sources */,
 				7C883998269493E30074E7D4 /* Tool.swift in Sources */,
 				7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */,
 				7C9E2DA826BEC0C00063E82F /* AVCapturePreViewController.swift in Sources */,
 				7C9CB16426988B0C008C18DE /* RenderWindowController.swift in Sources */,
+				7C9193B326C50C0500CEA07E /* CMSampleBuffer+osxmedia.swift in Sources */,
 				7C9E2DA426BEBEBE0063E82F /* TestViewController.swift in Sources */,
 				7C88394A2692CD550074E7D4 /* AppDelegate.swift in Sources */,
 				7CACB7D12697104D0019021F /* DeviceManager.swift in Sources */,
