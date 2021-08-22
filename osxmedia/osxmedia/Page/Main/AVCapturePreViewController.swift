@@ -65,7 +65,11 @@ class AVCapturePreViewController: BaseViewController, AVCaptureVideoDataOutputSa
     
     override func defaultSetting() -> Void {
         self.videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue.global())
-                
+        self.videoOutput.videoSettings = [
+            kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)
+        ]
+        
+        
         if self.previewLayer == nil {
             self.previewLayer = AVCaptureVideoPreviewLayer.init(session: self.avSession)
             self.previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -140,6 +144,9 @@ class AVCapturePreViewController: BaseViewController, AVCaptureVideoDataOutputSa
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if output == self.videoOutput {
             if self.videoDataDelegate != nil {
+                if connection.isVideoMirrored {
+                    sampleBuffer.reflectHorizontal()
+                }
                 self.videoDataDelegate.didVideoDataOutPut(sampleBuffer: sampleBuffer)
             }
         }
