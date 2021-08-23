@@ -32,6 +32,10 @@
 @property (nonatomic, assign) NSUInteger numVertices;
 @property (nonatomic, assign) MTLSize groupSize;
 @property (nonatomic, assign) MTLSize groupCount;
+
+@property (nonatomic, assign) CGFloat originWidth;
+@property (nonatomic, assign) CGFloat originHeight;
+
 @end
 
 @implementation MTKRenderOCViewController
@@ -42,6 +46,9 @@
 //    self.view.layer.backgroundColor = NSColor.blueColor.CGColor;
     // Do view setup here.
     // 设置Metal 相关
+}
+
+- (void)defaultSetting{
     [self setupMetal];
     [self customInit];
 }
@@ -50,10 +57,8 @@
     self.mtkView.device = MTLCreateSystemDefaultDevice();
     self.mtkView.delegate = self;
     self.mtkView.framebufferOnly = NO; // 允许读写操作
-//    self.viewportSize = CGSizeMake(self.mtkView.drawableSize.width, self.mtkView.drawableSize.height);
-    self.viewportSize = CGSizeMake(1280, 960);
-
     CVMetalTextureCacheCreate(NULL, NULL, self.mtkView.device, NULL, &_textureCache);
+    self.viewportSize = CGSizeMake(self.originWidth, self.originHeight);
 }
 
 - (void)customInit {
@@ -105,8 +110,8 @@
     // 纹理描述符
     MTLTextureDescriptor *textureDescriptor = [[MTLTextureDescriptor alloc] init];
     textureDescriptor.pixelFormat = MTLPixelFormatRGBA8Unorm; // 图片的格式要和数据一致
-    textureDescriptor.width = 1280;
-    textureDescriptor.height = 960;
+    textureDescriptor.width = self.originWidth;
+    textureDescriptor.height = self.originHeight;
     textureDescriptor.usage = MTLTextureUsageShaderRead; // 原图片只需要读取
     textureDescriptor.usage = MTLTextureUsageShaderWrite | MTLTextureUsageShaderRead; // 目标纹理在compute管道需要写，在render管道需要读
     self.destTexture = [self.mtkView.device newTextureWithDescriptor:textureDescriptor];
@@ -114,14 +119,8 @@
 
 - (void)setupThreadGroup {
     self.groupSize = MTLSizeMake(16, 16, 1); // 太大某些GPU不支持，太小效率低；
-    
-    //保证每个像素都有处理到
-//    _groupCount.width  = (self.sourceTexture.width  + self.groupSize.width -  1) / self.groupSize.width;
-//    _groupCount.height = (self.sourceTexture.height + self.groupSize.height - 1) / self.groupSize.height;
-//    _groupCount.depth = 1; // 我们是2D纹理，深度设为1
-    
-    _groupCount.width  = 1280 / self.groupSize.width;
-    _groupCount.height = 960 / self.groupSize.height;
+    _groupCount.width  = self.originWidth / self.groupSize.width;
+    _groupCount.height = self.originHeight / self.groupSize.height;
     _groupCount.depth = 1; // 我们是2D纹理，深度设为1
 }
 
@@ -132,6 +131,11 @@
 
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {
 //    self.viewportSize = CGSizeMake(size.width, size.height);
+//    if (size.width != self.originWidth) {
+//        self.originWidth = size.width;
+//        self.originHeight = size.height;
+//        [self defaultSetting];
+//    }
 }
 
 - (void)drawInMTKView:(MTKView *)view {
@@ -192,8 +196,17 @@
     size_t width = CVPixelBufferGetWidth(pixelBuffer);
     size_t height = CVPixelBufferGetHeight(pixelBuffer);
     
-    CVMetalTextureRef tmpTexture = NULL;
+    if (width != self.originWidth) {
+        self.originWidth = width;
+        self.originHeight = height;
+        
+        [self defaultSetting];
+        return;
+    }
     
+    
+    
+    CVMetalTextureRef tmpTexture = NULL;
     // 如果MTLPixelFormatBGRA8Unorm和摄像头采集时设置的颜色格式不一致，则会出现图像异常的情况；
     CVReturn status = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.textureCache, pixelBuffer, NULL, MTLPixelFormatBGRA8Unorm, width, height, 0, &tmpTexture);
     if(status == kCVReturnSuccess)
@@ -206,101 +219,3 @@
 
 
 @end
-
-
-
-
-
-
-////
-////  MTKRenderOCViewController.m
-////  osxmedia
-////
-////  Created by black2w on 2021/8/23.
-////
-//
-//
-//
-//#import "MTKRenderOCViewController.h"
-//#import <MetalPerformanceShaders/MetalPerformanceShaders.h>
-//
-//
-//@interface MTKRenderOCViewController () <MTKViewDelegate>{
-//
-//}
-//
-//// view
-//@property (nonatomic, strong) IBOutlet MTKView *mtkView;
-//@property (nonatomic, assign) CVMetalTextureCacheRef textureCache; //output
-//// data
-//@property (nonatomic, strong) id<MTLCommandQueue> commandQueue;
-//@property (nonatomic, strong) id<MTLTexture> texture;
-//@end
-//
-//@implementation MTKRenderOCViewController
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    self.view.wantsLayer = true;
-////    self.view.layer.backgroundColor = NSColor.blueColor.CGColor;
-//    // Do view setup here.
-//    // 设置Metal 相关
-//    [self setupMetal];
-//}
-//
-//- (void)setupMetal {
-////    self.mtkView = [[MTKView alloc] initWithFrame:self.view.bounds];
-//    self.mtkView.device = MTLCreateSystemDefaultDevice();
-////    [self.view insertSubview:self.mtkView atIndex:0];
-//    self.mtkView.delegate = self;
-//    self.mtkView.framebufferOnly = NO; // 允许读写操作
-//    //    self.mtkView.transform = CGAffineTransformMakeRotation(M_PI / 2);
-//    self.commandQueue = [self.mtkView.device newCommandQueue];
-//    CVMetalTextureCacheCreate(NULL, NULL, self.mtkView.device, NULL, &_textureCache);
-//}
-//
-//#pragma mark - delegate
-//
-//- (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {
-//
-//}
-//
-//- (void)drawInMTKView:(MTKView *)view {
-//    view.clearColor = MTLClearColorMake(1000, 0, 1, 1);
-//
-//    if (self.texture) {
-//        id<MTLCommandBuffer> commandBuffer = [self.commandQueue commandBuffer]; // 创建指令缓冲
-//        id<MTLTexture> drawingTexture = view.currentDrawable.texture; // 把MKTView作为目标纹理
-//
-//        MPSImageGaussianBlur *filter = [[MPSImageGaussianBlur alloc] initWithDevice:self.mtkView.device sigma:0]; // 这里的sigma值可以修改，sigma值越高图像越模糊
-////        MPSImageSobel *filter = [[MPSImageSobel alloc] initWithDevice:self.mtkView.device];
-//
-//
-//        [filter encodeToCommandBuffer:commandBuffer sourceTexture:self.texture destinationTexture:drawingTexture]; // 把摄像头返回图像数据的原始数据
-//
-//        [commandBuffer presentDrawable:view.currentDrawable]; // 展示数据
-//        [commandBuffer commit];
-//
-//        self.texture = NULL;
-//    }
-//}
-//
-//- (void)render:(CMSampleBufferRef)sampleBuffer {
-//    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-//
-//    size_t width = CVPixelBufferGetWidth(pixelBuffer);
-//    size_t height = CVPixelBufferGetHeight(pixelBuffer);
-//
-//    CVMetalTextureRef tmpTexture = NULL;
-//    // 如果MTLPixelFormatBGRA8Unorm和摄像头采集时设置的颜色格式不一致，则会出现图像异常的情况；
-//    CVReturn status = CVMetalTextureCacheCreateTextureFromImage(kCFAllocatorDefault, self.textureCache, pixelBuffer, NULL, MTLPixelFormatBGRA8Unorm, width, height, 0, &tmpTexture);
-//    if(status == kCVReturnSuccess)
-//    {
-//        self.mtkView.drawableSize = CGSizeMake(width, height);
-//        self.texture = CVMetalTextureGetTexture(tmpTexture);
-//        CFRelease(tmpTexture);
-//    }
-//}
-//
-//
-//@end

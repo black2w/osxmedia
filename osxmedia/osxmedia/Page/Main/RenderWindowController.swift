@@ -64,14 +64,6 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
     
     override func defaultSetting() {
         super.defaultSetting()
-        
-//        self.leftView.wantsLayer = true;///设置背景颜色
-//        self.leftView.layer!.backgroundColor = NSColor.red.cgColor
-//
-//        self.rightView.wantsLayer = true;///设置背景颜色
-//        self.rightView.layer!.backgroundColor = NSColor.blue.cgColor
-        
-        
         self.configDevice()
         self.setMenu()
     }
@@ -123,10 +115,12 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
         
         //sambuffer编辑        
 //        let testSample = Tool.modifySamBufferTOY(sampleBuffer: sampleBuffer)
-        
+
 //        self.samBufferDisplayVc.sampleBuffer = testSample
-        self.mtkVc.render(sampleBuffer)
+
 //        self.mtkSwiftVc.render(samplebuffer: sampleBuffer)
+        
+        self.mtkVc.render(sampleBuffer)
     }
 }
 
