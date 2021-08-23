@@ -49,6 +49,7 @@
 		7CACB7E4269757620019021F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CACB7E6269757620019021F /* Localizable.strings */; };
 		7CACB7EF269759850019021F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7CACB7F1269759850019021F /* InfoPlist.strings */; };
 		7CACB7F426975A060019021F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CACB7F326975A060019021F /* Info.plist */; };
+		7CB10F3226D374F000B0C185 /* shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 7CB10F3126D374F000B0C185 /* shaders.metal */; };
 		FB616AF54C1FDF88E498B501 /* Pods_osxmedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF903F9C051A39D7EDB3C2D0 /* Pods_osxmedia.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		7CACB7F0269759850019021F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7CACB7F2269759880019021F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		7CACB7F326975A060019021F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CB10F3126D374F000B0C185 /* shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shaders.metal; sourceTree = "<group>"; };
 		91DE104C2096D1D280ACC00C /* Pods-osxmedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osxmedia.release.xcconfig"; path = "Target Support Files/Pods-osxmedia/Pods-osxmedia.release.xcconfig"; sourceTree = "<group>"; };
 		9EA3C27A3AA07D246EE388F6 /* Pods-osxmedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-osxmedia.debug.xcconfig"; path = "Target Support Files/Pods-osxmedia/Pods-osxmedia.debug.xcconfig"; sourceTree = "<group>"; };
 		FF903F9C051A39D7EDB3C2D0 /* Pods_osxmedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_osxmedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,6 +295,7 @@
 		7C9CB15D2698898A008C18DE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7CB10F3126D374F000B0C185 /* shaders.metal */,
 				7C272FC026D2BE39001CCC53 /* ShaderTypes.h */,
 				7C272FBE26D2BD6D001CCC53 /* PWMPreviewRenderer.swift */,
 				7C9CB16226988B0C008C18DE /* RenderWindowController.swift */,
@@ -535,6 +538,7 @@
 				7C272FA726D290BE001CCC53 /* Effect.swift in Sources */,
 				7C272F9B26D27F48001CCC53 /* CMSampleBUffer+Extension.swift in Sources */,
 				7C88398A2693EE3F0074E7D4 /* BaseViewController.swift in Sources */,
+				7CB10F3226D374F000B0C185 /* shaders.metal in Sources */,
 				7C883998269493E30074E7D4 /* Tool.swift in Sources */,
 				7C272FAD26D29494001CCC53 /* MTHKView.swift in Sources */,
 				7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */,

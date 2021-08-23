@@ -71,70 +71,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C9E009EB-E7EF-48CC-8EFA-D3BDD08C2DF3"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "osxmedia/Page/Main/RenderWindowController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "configLeftAndRight()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "C9E009EB-E7EF-48CC-8EFA-D3BDD08C2DF3 - 80628a9fd10a969f"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "osxmedia.RenderWindowController.configLeftAndRight() -&gt; ()"
-                  moduleName = "osxmedia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/black2w/Documents/GitHub/osxmedia/osxmedia/osxmedia/Page/Main/RenderWindowController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "1632">
-               </Location>
-               <Location
-                  uuid = "C9E009EB-E7EF-48CC-8EFA-D3BDD08C2DF3 - 264464afaf14d28b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (SnapKit.ConstraintMaker) -&gt; () in osxmedia.RenderWindowController.configLeftAndRight() -&gt; ()"
-                  moduleName = "osxmedia"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/black2w/Documents/GitHub/osxmedia/osxmedia/osxmedia/Page/Main/RenderWindowController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "97"
-                  endingLineNumber = "97"
-                  offsetFromSymbolStart = "87">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CC0C37EF-0A74-417C-81FB-FD21CD118005"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "osxmedia/Page/Main/RenderWindowController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "configLeftAndRight()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "EAD416BC-CF66-410E-AC84-FFF4867DC1C6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -142,10 +78,10 @@
             filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "7">
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,10 +94,10 @@
             filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "-setupMetal"
-            landmarkType = "7">
+            startingLineNumber = "253"
+            endingLineNumber = "253"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -174,10 +110,10 @@
             filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-setupMetal"
-            landmarkType = "7">
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -190,9 +126,41 @@
             filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "-render:"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4399BB1B-EFA3-4E32-BBDF-03BDECDE0346"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-setupThreadGroup"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4C152994-7B7B-4C63-90B7-63D1C6132E37"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "-mtkView:drawableSizeWillChange:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
