@@ -71,16 +71,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4C152994-7B7B-4C63-90B7-63D1C6132E37"
+            uuid = "D5761DA4-AF37-4D28-937A-8F3C11E41089"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "osxmedia/Page/Main/MTKRenderOCViewController.m"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "133"
-            endingLineNumber = "133"
-            landmarkName = "-mtkView:drawableSizeWillChange:"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "-setupMetal"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -199,7 +199,7 @@
     if (width != self.originWidth) {
         self.originWidth = width;
         self.originHeight = height;
-        
+        //第一次数据不一样，丢弃。为了重置相关参数
         [self defaultSetting];
         return;
     }
