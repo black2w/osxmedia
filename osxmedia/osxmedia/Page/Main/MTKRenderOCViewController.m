@@ -16,8 +16,9 @@
     
 }
 
-// view
+//渲染的view
 @property (nonatomic, strong) IBOutlet MTKView *mtkView;
+
 @property (nonatomic, assign) CVMetalTextureCacheRef textureCache; //output
 
 @property (nonatomic, assign) CGSize viewportSize;
@@ -33,6 +34,7 @@
 @property (nonatomic, assign) MTLSize groupSize;
 @property (nonatomic, assign) MTLSize groupCount;
 
+//原始宽高
 @property (nonatomic, assign) CGFloat originWidth;
 @property (nonatomic, assign) CGFloat originHeight;
 
@@ -42,10 +44,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.wantsLayer = true;
+//    self.view.wantsLayer = true;
 //    self.view.layer.backgroundColor = NSColor.blueColor.CGColor;
     // Do view setup here.
-    // 设置Metal 相关
 }
 
 - (void)defaultSetting{
@@ -54,6 +55,7 @@
 }
 
 - (void)setupMetal {
+    // 设置Metal 相关
     self.mtkView.device = MTLCreateSystemDefaultDevice();
     self.mtkView.delegate = self;
     self.mtkView.framebufferOnly = NO; // 允许读写操作
@@ -130,18 +132,12 @@
 #pragma mark - delegate
 
 - (void)mtkView:(nonnull MTKView *)view drawableSizeWillChange:(CGSize)size {
-//    self.viewportSize = CGSizeMake(size.width, size.height);
-//    if (size.width != self.originWidth) {
-//        self.originWidth = size.width;
-//        self.originHeight = size.height;
-//        [self defaultSetting];
-//    }
+
 }
 
 - (void)drawInMTKView:(MTKView *)view {
     // 每次渲染都要单独创建一个CommandBuffer
     id<MTLCommandBuffer> commandBuffer = [self.commandQueue commandBuffer];
-    
     {
         // 创建计算指令的编码器
         id<MTLComputeCommandEncoder> computeEncoder = [commandBuffer computeCommandEncoder];
@@ -162,8 +158,7 @@
     
     MTLRenderPassDescriptor *renderPassDescriptor = view.currentRenderPassDescriptor;
     // MTLRenderPassDescriptor描述一系列attachments的值，类似GL的FrameBuffer；同时也用来创建MTLRenderCommandEncoder
-    if(renderPassDescriptor != nil)
-    {
+    if(renderPassDescriptor != nil) {
         renderPassDescriptor.colorAttachments[0].clearColor = MTLClearColorMake(0.0, 0.5, 0.5, 1.0f); // 设置默认颜色
         id<MTLRenderCommandEncoder> renderEncoder = [commandBuffer renderCommandEncoderWithDescriptor:renderPassDescriptor]; //编码绘制指令的Encoder
         [renderEncoder setViewport:(MTLViewport){0.0, 0.0, self.viewportSize.width, self.viewportSize.height, -1.0, 1.0 }]; // 设置显示区域
@@ -199,7 +194,7 @@
     if (width != self.originWidth) {
         self.originWidth = width;
         self.originHeight = height;
-        //第一次数据不一样，丢弃。为了重置相关参数
+        //第一次数据不一样，丢弃。为了重置渲染相关参数,主要设备切换的时候
         [self defaultSetting];
         return;
     }
