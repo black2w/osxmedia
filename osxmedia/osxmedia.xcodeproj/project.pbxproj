@@ -8,15 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7C272F9B26D27F48001CCC53 /* CMSampleBUffer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272F9A26D27F48001CCC53 /* CMSampleBUffer+Extension.swift */; };
-		7C272FA726D290BE001CCC53 /* Effect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FA626D290BE001CCC53 /* Effect.swift */; };
-		7C272FA926D2939F001CCC53 /* StreamRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FA826D2939F001CCC53 /* StreamRenderer.swift */; };
-		7C272FAB26D293E1001CCC53 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FAA26D293E1001CCC53 /* Stream.swift */; };
-		7C272FAD26D29494001CCC53 /* MTHKView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FAC26D29494001CCC53 /* MTHKView.swift */; };
-		7C272FB626D2AADF001CCC53 /* MTKRenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FB426D2AADF001CCC53 /* MTKRenderViewController.swift */; };
-		7C272FB726D2AADF001CCC53 /* MTKRenderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C272FB526D2AADF001CCC53 /* MTKRenderViewController.xib */; };
 		7C272FBB26D2ADF0001CCC53 /* MTKRenderOCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FB926D2ADF0001CCC53 /* MTKRenderOCViewController.m */; };
 		7C272FBC26D2ADF0001CCC53 /* MTKRenderOCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C272FBA26D2ADF0001CCC53 /* MTKRenderOCViewController.xib */; };
-		7C272FBF26D2BD6D001CCC53 /* PWMPreviewRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C272FBE26D2BD6D001CCC53 /* PWMPreviewRenderer.swift */; };
 		7C88394A2692CD550074E7D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8839492692CD550074E7D4 /* AppDelegate.swift */; };
 		7C88394E2692CD5B0074E7D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C88394D2692CD5B0074E7D4 /* Assets.xcassets */; };
 		7C8839512692CD5B0074E7D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C88394F2692CD5B0074E7D4 /* Main.storyboard */; };
@@ -35,8 +28,6 @@
 		7C9CB16426988B0C008C18DE /* RenderWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB16226988B0C008C18DE /* RenderWindowController.swift */; };
 		7C9CB16526988B0C008C18DE /* RenderWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9CB16326988B0C008C18DE /* RenderWindowController.xib */; };
 		7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9CB1672698A6C3008C18DE /* NSView+Common.swift */; };
-		7C9E2DA426BEBEBE0063E82F /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA226BEBEBE0063E82F /* TestViewController.swift */; };
-		7C9E2DA526BEBEBE0063E82F /* TestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA326BEBEBE0063E82F /* TestViewController.xib */; };
 		7C9E2DA826BEC0C00063E82F /* AVCapturePreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA626BEC0C00063E82F /* AVCapturePreViewController.swift */; };
 		7C9E2DA926BEC0C00063E82F /* AVCapturePreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C9E2DA726BEC0C00063E82F /* AVCapturePreViewController.xib */; };
 		7C9E2DAC26BED7900063E82F /* SampleBufferDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9E2DAA26BED7900063E82F /* SampleBufferDisplayViewController.swift */; };
@@ -72,18 +63,11 @@
 
 /* Begin PBXFileReference section */
 		7C272F9A26D27F48001CCC53 /* CMSampleBUffer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMSampleBUffer+Extension.swift"; sourceTree = "<group>"; };
-		7C272FA626D290BE001CCC53 /* Effect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Effect.swift; sourceTree = "<group>"; };
-		7C272FA826D2939F001CCC53 /* StreamRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamRenderer.swift; sourceTree = "<group>"; };
-		7C272FAA26D293E1001CCC53 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		7C272FAC26D29494001CCC53 /* MTHKView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTHKView.swift; sourceTree = "<group>"; };
 		7C272FAE26D2AABD001CCC53 /* osxmedia-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "osxmedia-Bridging-Header.h"; sourceTree = "<group>"; };
-		7C272FB426D2AADF001CCC53 /* MTKRenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKRenderViewController.swift; sourceTree = "<group>"; };
-		7C272FB526D2AADF001CCC53 /* MTKRenderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MTKRenderViewController.xib; sourceTree = "<group>"; };
 		7C272FB826D2ADF0001CCC53 /* MTKRenderOCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTKRenderOCViewController.h; sourceTree = "<group>"; };
 		7C272FB926D2ADF0001CCC53 /* MTKRenderOCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTKRenderOCViewController.m; sourceTree = "<group>"; };
 		7C272FBA26D2ADF0001CCC53 /* MTKRenderOCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MTKRenderOCViewController.xib; sourceTree = "<group>"; };
 		7C272FBD26D2AF7A001CCC53 /* Bridging_Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
-		7C272FBE26D2BD6D001CCC53 /* PWMPreviewRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWMPreviewRenderer.swift; sourceTree = "<group>"; };
 		7C272FC026D2BE39001CCC53 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		7C8839462692CD550074E7D4 /* osxmedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = osxmedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C8839492692CD550074E7D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,8 +91,6 @@
 		7C9CB16226988B0C008C18DE /* RenderWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderWindowController.swift; sourceTree = "<group>"; };
 		7C9CB16326988B0C008C18DE /* RenderWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RenderWindowController.xib; sourceTree = "<group>"; };
 		7C9CB1672698A6C3008C18DE /* NSView+Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+Common.swift"; sourceTree = "<group>"; };
-		7C9E2DA226BEBEBE0063E82F /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		7C9E2DA326BEBEBE0063E82F /* TestViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestViewController.xib; sourceTree = "<group>"; };
 		7C9E2DA626BEC0C00063E82F /* AVCapturePreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVCapturePreViewController.swift; sourceTree = "<group>"; };
 		7C9E2DA726BEC0C00063E82F /* AVCapturePreViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVCapturePreViewController.xib; sourceTree = "<group>"; };
 		7C9E2DAA26BED7900063E82F /* SampleBufferDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleBufferDisplayViewController.swift; sourceTree = "<group>"; };
@@ -172,17 +154,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		7C272FA526D29092001CCC53 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				7C272FA626D290BE001CCC53 /* Effect.swift */,
-				7C272FA826D2939F001CCC53 /* StreamRenderer.swift */,
-				7C272FAA26D293E1001CCC53 /* Stream.swift */,
-				7C272FAC26D29494001CCC53 /* MTHKView.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		7C3E569026CAB40F00CD7FA3 /* Render */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,7 +186,6 @@
 		7C8839482692CD550074E7D4 /* osxmedia */ = {
 			isa = PBXGroup;
 			children = (
-				7C272FA526D29092001CCC53 /* New Group */,
 				7C9CB1662698A5EC008C18DE /* Category */,
 				7CACB7F326975A060019021F /* Info.plist */,
 				7CACB7D226971E4C0019021F /* Const */,
@@ -297,18 +267,13 @@
 			children = (
 				7CB10F3126D374F000B0C185 /* shaders.metal */,
 				7C272FC026D2BE39001CCC53 /* ShaderTypes.h */,
-				7C272FBE26D2BD6D001CCC53 /* PWMPreviewRenderer.swift */,
 				7C9CB16226988B0C008C18DE /* RenderWindowController.swift */,
 				7C9CB16326988B0C008C18DE /* RenderWindowController.xib */,
-				7C9E2DA226BEBEBE0063E82F /* TestViewController.swift */,
-				7C9E2DA326BEBEBE0063E82F /* TestViewController.xib */,
 				7C9E2DA626BEC0C00063E82F /* AVCapturePreViewController.swift */,
 				7C9E2DA726BEC0C00063E82F /* AVCapturePreViewController.xib */,
 				7C9E2DAA26BED7900063E82F /* SampleBufferDisplayViewController.swift */,
 				7C9E2DAB26BED7900063E82F /* SampleBufferDisplayViewController.xib */,
 				7C272FAE26D2AABD001CCC53 /* osxmedia-Bridging-Header.h */,
-				7C272FB426D2AADF001CCC53 /* MTKRenderViewController.swift */,
-				7C272FB526D2AADF001CCC53 /* MTKRenderViewController.xib */,
 				7C272FB826D2ADF0001CCC53 /* MTKRenderOCViewController.h */,
 				7C272FB926D2ADF0001CCC53 /* MTKRenderOCViewController.m */,
 				7C272FBA26D2ADF0001CCC53 /* MTKRenderOCViewController.xib */,
@@ -458,11 +423,9 @@
 				7C272FBC26D2ADF0001CCC53 /* MTKRenderOCViewController.xib in Resources */,
 				7C9CB16526988B0C008C18DE /* RenderWindowController.xib in Resources */,
 				7CACB7F426975A060019021F /* Info.plist in Resources */,
-				7C9E2DA526BEBEBE0063E82F /* TestViewController.xib in Resources */,
 				7C88398E2693EE560074E7D4 /* BaseWindowController.xib in Resources */,
 				7C88394E2692CD5B0074E7D4 /* Assets.xcassets in Resources */,
 				7C8839512692CD5B0074E7D4 /* Main.storyboard in Resources */,
-				7C272FB726D2AADF001CCC53 /* MTKRenderViewController.xib in Resources */,
 				7C9E2DAD26BED7900063E82F /* SampleBufferDisplayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,21 +498,14 @@
 				7C9CB1682698A6C3008C18DE /* NSView+Common.swift in Sources */,
 				7C9193B526C511A500CEA07E /* CVPixelBuffer+Extension.swift in Sources */,
 				7CA5110126A460B200F9822F /* NSScreenExt.swift in Sources */,
-				7C272FA726D290BE001CCC53 /* Effect.swift in Sources */,
 				7C272F9B26D27F48001CCC53 /* CMSampleBUffer+Extension.swift in Sources */,
 				7C88398A2693EE3F0074E7D4 /* BaseViewController.swift in Sources */,
 				7CB10F3226D374F000B0C185 /* shaders.metal in Sources */,
 				7C883998269493E30074E7D4 /* Tool.swift in Sources */,
-				7C272FAD26D29494001CCC53 /* MTHKView.swift in Sources */,
 				7CACB7CF26970EAC0019021F /* MenuManager.swift in Sources */,
-				7C272FA926D2939F001CCC53 /* StreamRenderer.swift in Sources */,
 				7C9E2DA826BEC0C00063E82F /* AVCapturePreViewController.swift in Sources */,
-				7C272FBF26D2BD6D001CCC53 /* PWMPreviewRenderer.swift in Sources */,
 				7C9CB16426988B0C008C18DE /* RenderWindowController.swift in Sources */,
-				7C272FB626D2AADF001CCC53 /* MTKRenderViewController.swift in Sources */,
-				7C272FAB26D293E1001CCC53 /* Stream.swift in Sources */,
 				7C9193B326C50C0500CEA07E /* CMSampleBuffer+osxmedia.swift in Sources */,
-				7C9E2DA426BEBEBE0063E82F /* TestViewController.swift in Sources */,
 				7C88394A2692CD550074E7D4 /* AppDelegate.swift in Sources */,
 				7C272FBB26D2ADF0001CCC53 /* MTKRenderOCViewController.m in Sources */,
 				7CACB7D12697104D0019021F /* DeviceManager.swift in Sources */,

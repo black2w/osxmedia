@@ -31,11 +31,6 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
         return MTKRenderOCViewController.init(nibName: "MTKRenderOCViewController", bundle: nil)
     } ()
     
-    //使用METAL Swift 实现的Vc
-    var mtkSwiftVc: MTKRenderViewController! = {
-        return MTKRenderViewController.init(nibName: "MTKRenderViewController", bundle: nil)
-    } ()
-    
     //当前选择的设备
     var currentViDevice: DeviceObject!
     var lastSampleBuffer: CMSampleBuffer!  //最后一帧图像
@@ -79,22 +74,10 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
             make.edges.equalTo(self.leftView)
         }
         
-//        self.rightView.addSubview(self.samBufferDisplayVc.view)
-//        self.samBufferDisplayVc.view.snp_makeConstraints { (make) in
-//            make.edges.equalTo(self.rightView)
-//        }
-        
         self.rightView.addSubview(self.mtkVc.view)
         self.mtkVc.view.snp_makeConstraints { (make) in
             make.edges.equalTo(self.rightView)
         }
-        
-//        self.rightView.addSubview(self.mtkSwiftVc.view)
-//        self.mtkSwiftVc.view.snp_makeConstraints { (make) in
-//            make.edges.equalTo(self.rightView)
-//        }
-        
-        
     }
     
     func configDevice() -> Void {
@@ -112,13 +95,7 @@ class RenderWindowController: BaseWindowController, AVCapturePreViewControllerDe
     //AVRenderViewControllerDelegate
     func didVideoDataOutPut(sampleBuffer: CMSampleBuffer) {
         self.lastSampleBuffer = sampleBuffer
-        
-        //sambuffer编辑        
-//        let testSample = Tool.modifySamBufferTOY(sampleBuffer: sampleBuffer)
-
-//        self.samBufferDisplayVc.sampleBuffer = testSample
-
-//        self.mtkSwiftVc.render(samplebuffer: sampleBuffer)
+//这里可以对sambuffer copy后，对data编辑后创建新buffer去显示。目前改方法在调查中国
         
         self.mtkVc.render(sampleBuffer)
     }

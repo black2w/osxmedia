@@ -14,8 +14,8 @@
             filePath = "osxmedia/Page/Main/RenderWindowController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "menuWillOpen(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "osxmedia/Page/Main/RenderWindowController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "setMenu()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "osxmedia/Page/Main/RenderWindowController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "configDevice()"
             landmarkType = "7">
          </BreakpointContent>
